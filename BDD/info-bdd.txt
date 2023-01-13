@@ -1,0 +1,4 @@
+nom de la bdd = befree
+
+utilisateur bdd : befree
+mdp utilisateur bdd : befree
