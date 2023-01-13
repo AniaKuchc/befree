@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RandonneeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,6 +34,14 @@ class Randonnee
     #[ORM\ManyToOne(inversedBy: 'randonnees')]
     #[ORM\JoinColumn(nullable: true)]
     private ?CatalogueRandonnee $catalogueRandonnees = null;
+
+    #[ORM\OneToMany(mappedBy: 'activiteRandonnee', targetEntity: Activite::class, orphanRemoval: true)]
+    private Collection $activites;
+
+    public function __construct()
+    {
+        $this->activites = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -106,6 +116,36 @@ class Randonnee
     public function setCatalogueRandonnees(?CatalogueRandonnee $catalogueRandonnees): self
     {
         $this->catalogueRandonnees = $catalogueRandonnees;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Activite>
+     */
+    public function getActivites(): Collection
+    {
+        return $this->activites;
+    }
+
+    public function addActivite(Activite $activite): self
+    {
+        if (!$this->activites->contains($activite)) {
+            $this->activites->add($activite);
+            $activite->setActiviteRandonnee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActivite(Activite $activite): self
+    {
+        if ($this->activites->removeElement($activite)) {
+            // set the owning side to null (unless already changed)
+            if ($activite->getActiviteRandonnee() === $this) {
+                $activite->setActiviteRandonnee(null);
+            }
+        }
 
         return $this;
     }
