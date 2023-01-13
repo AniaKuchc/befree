@@ -13,7 +13,7 @@ class DefaultController extends AbstractController
     #[Route('/', name: 'app_default')]
     public function index(TypePrestataireRepository $TypePrestataireRepository): Response
     {
-        $test = $TypePrestataireRepository->findType();
+        $test = '';
 
         return $this->render('default/index.html.twig', [
             'controller_name' => 'DefaultController',
