@@ -39,28 +39,32 @@ class TypePrestataireRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return TypePrestataire[] Returns an array of TypePrestataire objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('t.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return array Returns an array of types de Prestataire from CSV file
+     */
+    public function findType(): array
+    {
 
-//    public function findOneBySomeField($value): ?TypePrestataire
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        $file =  fopen("__DIR__/../../BDD/type_prestataires.csv", 'r');
+        while (!feof($file)) {
+            $extract[] = fgetcsv($file);
+        }
+        fclose($file);
+
+        for ($c = 0; $c < count($extract); $c++) {
+            $loopedTab = $extract[$c][0];
+        }
+
+        return $loopedTab;
+    }
+
+    //    public function findOneBySomeField($value): ?TypePrestataire
+    //    {
+    //        return $this->createQueryBuilder('t')
+    //            ->andWhere('t.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }
