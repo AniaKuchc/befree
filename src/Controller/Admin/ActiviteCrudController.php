@@ -6,6 +6,7 @@ use App\Entity\Activite;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
@@ -28,11 +29,16 @@ class ActiviteCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            AssociationField::new('activitePrestataire', 'Prestataire de l\'activite'),
+            AssociationField::new('ActiviteType', 'Type d\'activite'),
+            AssociationField::new('activiteRandonnee', 'Randonnee'),
             TextField::new('nomActivite', 'Nom'),
             TextEditorField::new('descriptionActivite', 'Description'),
             DateTimeField::new('dateActivite', 'date'),
             NumberField::new('placeMaximum', 'Place maximum'),
             BooleanField::new('afficherActivite', 'Afficher ?'),
+            AssociationField::new('activiteAdresse', 'Adresse de l\'activite'),
+            AssociationField::new('activiteOffre', 'Offre dont dépend l\'activite'),
         ];
     }
 

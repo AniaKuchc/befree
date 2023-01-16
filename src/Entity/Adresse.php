@@ -151,4 +151,9 @@ class Adresse
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->numeroAdresse . ' ' . $this->rueAdresse . ' ' . $this->codePostalAdresse . ' ' . $this->villeAdresse;
+    }
 }
