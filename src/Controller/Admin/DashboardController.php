@@ -3,8 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Activite;
+use App\Entity\Adresse;
+use App\Entity\Client;
+use App\Entity\Offre;
 use App\Entity\Prestataire;
 use App\Entity\Randonnee;
+use App\Entity\TypeActivite;
+use App\Entity\TypePrestataire;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -47,5 +52,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Activite', 'fa-solid fa-person-snowboarding', Activite::class);
         yield MenuItem::linkToCrud('Randonnee', 'fa-solid fa-person-hiking', Randonnee::class);
         yield MenuItem::linkToCrud('Prestataire', 'fa-solid fa-book', Prestataire::class);
+        yield MenuItem::linkToCrud('TypePrestataire', 'fa-regular fa-bookmark', TypePrestataire::class);
+        yield MenuItem::linkToCrud('TypeActivite', "fa-solid fa-burst", TypeActivite::class);
+        yield MenuItem::linkToCrud('Adresse', "fa-solid fa-address-book", Adresse::class);
+        yield MenuItem::linkToCrud('Offre', "fa-solid fa-receipt", Offre::class);
+        yield MenuItem::linkToCrud('Client', "fa-solid fa-users-line", Client::class);
     }
 }

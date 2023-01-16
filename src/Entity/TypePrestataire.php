@@ -69,4 +69,9 @@ class TypePrestataire
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->nomTypePrestataire;
+    }
 }

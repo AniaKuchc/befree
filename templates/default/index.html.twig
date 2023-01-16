@@ -1,15 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block title %}Be free - Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+
+<header>
+<img src='./public/build/imageslogo.png'>
+
+</header>
+
+<main class='container'>
+
+<section class="fonction">    
+    <div class="fonction__card">
+        <div class='function__card__number'>1</div>
+        <div class='fonction__card__content'>
+            <p>Je m’abonne à une des trois offres disponibles selon le type d’activité que je veux faire</p>
+        </div>
+    </div>
+    <div class="fonction__card">
+        <div class='function__card__number'>2</div>
+    <div class='fonction__card__content'>
+    <p>Je m’inscris à une des activités proposées chaque mois</p>
+    </div>
+    </div>
+    <div class="fonction__card">
+        <div class='function__card__number'>3</div>
+    <div class='fonction__card__content'>
+    <p>Je me rends sur place, tout est pret, je profite de mon activité</p></div>
+    </div>   
+</section>
+
+
+</main>
 
 <div class="example-wrapper">
-
+Salut
 {{test}}
     
 </div>

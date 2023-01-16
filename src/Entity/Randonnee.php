@@ -153,6 +153,6 @@ class Randonnee
 
     public function __toString(): string
     {
-        return $this->villeRandonnee;
+        return 'Randonnée ' . $this->nomRandonnee . ' près de la ville de ' . $this->villeRandonnee;
     }
 }

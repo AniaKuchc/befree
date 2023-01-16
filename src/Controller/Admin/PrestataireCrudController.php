@@ -6,6 +6,7 @@ use App\Entity\Prestataire;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -22,6 +23,7 @@ class PrestataireCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            AssociationField::new('typePrestataires', 'Type de Prestataire'),
             TextField::new('nomPrestataire', 'Nom'),
             TextEditorField::new('descriptionPrestataire', 'Description'),
             NumberField::new('inseePrestataire', 'code INSEE'),
