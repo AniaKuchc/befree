@@ -42,20 +42,21 @@ class TypePrestataireRepository extends ServiceEntityRepository
     /**
      * @return array Returns an array of types de Prestataire from CSV file
      */
-    public function findType(): array
+    public function findType()
+
     {
 
-        $file =  fopen("__DIR__/../../BDD/type_prestataires.csv", 'r');
-        while (!feof($file)) {
-            $extract[] = fgetcsv($file);
-        }
-        fclose($file);
+        // $file =  fopen("__DIR__/../../BDD/type_prestataires.csv", 'r');
+        // while (!feof($file)) {
+        //     $extract[] = fgetcsv($file);
+        // }
+        // fclose($file);
 
-        for ($c = 0; $c < count($extract); $c++) {
-            $loopedTab = $extract[$c][0];
-        }
+        // for ($c = 0; $c < count($extract); $c++) {
+        //     $loopedTab = $extract[$c][0];
+        // }
 
-        return $loopedTab;
+        // return $loopedTab;
     }
 
     //    public function findOneBySomeField($value): ?TypePrestataire
