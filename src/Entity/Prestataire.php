@@ -28,7 +28,7 @@ class Prestataire
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $villePrestataire = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $geopointPrestataire = null;
 
     #[ORM\ManyToMany(targetEntity: TypePrestataire::class, inversedBy: 'prestataires')]

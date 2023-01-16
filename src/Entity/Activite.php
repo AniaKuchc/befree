@@ -40,7 +40,7 @@ class Activite
     private ?TypeActivite $ActiviteType = null;
 
     #[ORM\ManyToOne(inversedBy: 'activites')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Randonnee $activiteRandonnee = null;
 
     #[ORM\ManyToMany(targetEntity: Personnel::class, mappedBy: 'affectationPersonnelActivite')]
@@ -242,5 +242,10 @@ class Activite
         }
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->nomActivite;
     }
 }
