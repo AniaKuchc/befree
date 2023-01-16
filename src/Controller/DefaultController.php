@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     #[Route('/', name: 'app_default')]
-    public function index(TypePrestataireRepository $TypePrestataireRepository): Response
+    public function index(): Response
     {
         $test = 'Page d\'accueil';
 
