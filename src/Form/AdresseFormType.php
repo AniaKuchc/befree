@@ -17,7 +17,7 @@ class AdresseFormType extends AbstractType
             ->add('numeroAdresse', IntegerType::class, ['label' => 'No Rue'])
             ->add('rueAdresse', TextType::class, ['label' => 'Rue'])
             ->add('codePostalAdresse', IntegerType::class, ['label' => 'Code postal'])
-            ->add('villeAdresse', TextType::class, ['label' => 'Rue']);
+            ->add('villeAdresse', TextType::class, ['label' => 'Ville']);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

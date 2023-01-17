@@ -32,7 +32,8 @@ class Client
 
     #[ORM\ManyToOne(inversedBy: 'adresseClient')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Adresse $adresse = null;
+    // private ?Adresse $adresse = null;
+    private Collection $adresse;
 
     #[ORM\OneToMany(mappedBy: 'inscriptionClient', targetEntity: InscriptionClientActivite::class, orphanRemoval: true)]
     private Collection $inscriptionClientActivites;
@@ -41,6 +42,7 @@ class Client
     {
         $this->souscriptionClient = new ArrayCollection();
         $this->inscriptionClientActivites = new ArrayCollection();
+        $this->adresse = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -126,7 +128,12 @@ class Client
         return $this;
     }
 
-    public function getAdresse(): ?Adresse
+    // public function getAdresse(): ?Adresse
+    // {
+    //     return $this->adresse;
+    // }
+
+    public function getAdresse(): Collection
     {
         return $this->adresse;
     }
@@ -137,6 +144,7 @@ class Client
 
         return $this;
     }
+
 
     /**
      * @return Collection<int, InscriptionClientActivite>

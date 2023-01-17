@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,8 +21,12 @@ class ClientPremiereInscriptionFormType extends AbstractType
             ->add('prenomClient', TextType::class, ['label' => 'Prénom'])
             ->add('nomClient', TextType::class, ['label' => 'Nom'])
             ->add('mailClient', EmailType::class, ['label' => 'E-mail'])
-            ->add('motDePasseClient', PasswordType::class, ['label' => 'Mot de passe'])
-            ->add('motDePasseClient', PasswordType::class, ['label' => 'Mot de passe'])
+            // ->add('motDePasseClient', PasswordType::class, ['label' => 'Mot de passe'])
+            ->add('motDePasseClient', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'first_options' => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Confirmer le mot de passe'],
+            ])
             ->add('adresse', CollectionType::class, [
                 'entry_type' => AdresseFormType::class,
                 'entry_options' => ['label' => false],
