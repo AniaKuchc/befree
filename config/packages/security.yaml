@@ -9,13 +9,24 @@ security:
             entity:
                 class: App\Entity\Personnels
                 property: email
+
+        app_client_provider:
+            entity:
+                class: App\Entity\Clients
+                property: email
+
+        app_all_users:
+            chain:
+                providers: ["app_user_provider", "app_client_provider"]
+
+        # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
-            provider: app_user_provider
+            provider: app_all_users
             form_login:
                 # "app_login" is the name of the route created previously
                 login_path: app_login
