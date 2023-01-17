@@ -27,7 +27,7 @@ class ClientPremiereInscriptionFormType extends AbstractType
                 'entry_options' => ['label' => false],
                 'allow_add' => true,
             ])
-            ->add('S\'inscrire', SubmitType::class);
+            ->add('inscrire', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

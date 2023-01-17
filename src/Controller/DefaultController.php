@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Client;
+use App\Entity\Adresse;
+use App\Form\AdresseFormType;
+use App\Form\ClientPremiereInscriptionFormType;
 use App\Repository\PrestataireRepository;
 use App\Repository\TypePrestataireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,18 +26,18 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    #[Route('/inscription', name: 'premiere_inscription')]
+    #[Route('/inscription', name: 'premiereInscription')]
     public function premiereInscription(Request $request): Response  //$adresse ?
     {
         $client = new Client;
+        // $client->addAdresse($adresse);        
+        $adresse = new Adresse;
+        // $client->getAdresse()->addAdresseClient($adresse);
+
         $form = $this->createForm(ClientPremiereInscriptionFormType::class, $client);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
-            dump($client);
-        }
-
-        return $this->render('inscription/index.html.twig', [
+        return $this->render('default/premiere_inscription.html.twig', [
             'form_premiere_inscription' => $form->createView(),
         ]);
     }
