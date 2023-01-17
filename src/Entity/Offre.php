@@ -21,16 +21,19 @@ class Offre
     #[ORM\Column]
     private ?float $prixOffre = null;
 
-    #[ORM\OneToMany(mappedBy: 'offre', targetEntity: SoucriptionClientOffre::class, orphanRemoval: true)]
-    private Collection $souscriptionOffre;
+
 
     #[ORM\OneToMany(mappedBy: 'activiteOffre', targetEntity: Activite::class, orphanRemoval: true)]
     private Collection $activites;
 
+    #[ORM\OneToMany(mappedBy: 'offres', targetEntity: SouscriptionClientOffre::class, orphanRemoval: true)]
+    private Collection $souscriptionClientOffres;
+
     public function __construct()
     {
-        $this->souscriptionOffre = new ArrayCollection();
+
         $this->activites = new ArrayCollection();
+        $this->souscriptionClientOffres = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -62,35 +65,7 @@ class Offre
         return $this;
     }
 
-    /**
-     * @return Collection<int, SoucriptionClientOffre>
-     */
-    public function getSouscriptionOffre(): Collection
-    {
-        return $this->souscriptionOffre;
-    }
 
-    public function addSouscriptionOffre(SoucriptionClientOffre $souscriptionOffre): self
-    {
-        if (!$this->souscriptionOffre->contains($souscriptionOffre)) {
-            $this->souscriptionOffre->add($souscriptionOffre);
-            $souscriptionOffre->setOffre($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSouscriptionOffre(SoucriptionClientOffre $souscriptionOffre): self
-    {
-        if ($this->souscriptionOffre->removeElement($souscriptionOffre)) {
-            // set the owning side to null (unless already changed)
-            if ($souscriptionOffre->getOffre() === $this) {
-                $souscriptionOffre->setOffre(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Activite>
@@ -125,5 +100,35 @@ class Offre
     public function __toString(): string
     {
         return $this->nomOffre . ' - ' . $this->prixOffre . ' €';
+    }
+
+    /**
+     * @return Collection<int, SouscriptionClientOffre>
+     */
+    public function getSouscriptionClientOffres(): Collection
+    {
+        return $this->souscriptionClientOffres;
+    }
+
+    public function addSouscriptionClientOffre(SouscriptionClientOffre $souscriptionClientOffre): self
+    {
+        if (!$this->souscriptionClientOffres->contains($souscriptionClientOffre)) {
+            $this->souscriptionClientOffres->add($souscriptionClientOffre);
+            $souscriptionClientOffre->setOffres($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSouscriptionClientOffre(SouscriptionClientOffre $souscriptionClientOffre): self
+    {
+        if ($this->souscriptionClientOffres->removeElement($souscriptionClientOffre)) {
+            // set the owning side to null (unless already changed)
+            if ($souscriptionClientOffre->getOffres() === $this) {
+                $souscriptionClientOffre->setOffres(null);
+            }
+        }
+
+        return $this;
     }
 }

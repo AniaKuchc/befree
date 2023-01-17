@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PersonnelsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -32,6 +34,14 @@ class Personnels implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $prenom = null;
+
+    #[ORM\ManyToMany(targetEntity: Activite::class, inversedBy: 'personnels')]
+    private Collection $activites;
+
+    public function __construct()
+    {
+        $this->activites = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -123,6 +133,30 @@ class Personnels implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Activite>
+     */
+    public function getActivites(): Collection
+    {
+        return $this->activites;
+    }
+
+    public function addActivite(Activite $activite): self
+    {
+        if (!$this->activites->contains($activite)) {
+            $this->activites->add($activite);
+        }
+
+        return $this;
+    }
+
+    public function removeActivite(Activite $activite): self
+    {
+        $this->activites->removeElement($activite);
 
         return $this;
     }

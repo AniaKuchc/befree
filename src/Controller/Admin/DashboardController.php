@@ -57,7 +57,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('TypeActivite', "fa-solid fa-burst", TypeActivite::class);
         yield MenuItem::linkToCrud('Adresse', "fa-solid fa-address-book", Adresse::class);
         yield MenuItem::linkToCrud('Offre', "fa-solid fa-receipt", Offre::class);
-        yield MenuItem::linkToCrud('Client', "fa-solid fa-users-line", Client::class);
         yield MenuItem::linkToCrud('Personnels', "fa-solid fa-users-line", Personnels::class);
     }
 }

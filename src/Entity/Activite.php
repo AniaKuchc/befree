@@ -43,8 +43,6 @@ class Activite
     #[ORM\JoinColumn(nullable: true)]
     private ?Randonnee $activiteRandonnee = null;
 
-    #[ORM\ManyToMany(targetEntity: Personnel::class, mappedBy: 'affectationPersonnelActivite')]
-    private Collection $personnels;
 
     #[ORM\ManyToOne(inversedBy: 'activites')]
     private ?Adresse $activiteAdresse = null;
@@ -53,13 +51,17 @@ class Activite
     #[ORM\JoinColumn(nullable: false)]
     private ?Offre $activiteOffre = null;
 
-    #[ORM\OneToMany(mappedBy: 'inscriptionActivite', targetEntity: InscriptionClientActivite::class, orphanRemoval: true)]
-    private Collection $inscriptionClientActivites;
+    #[ORM\ManyToMany(targetEntity: Personnels::class, mappedBy: 'activites')]
+    private Collection $personnels;
+
+    #[ORM\OneToMany(mappedBy: 'activites', targetEntity: InscriptionClientsActivite::class, orphanRemoval: true)]
+    private Collection $inscriptionClientsActivites;
+
 
     public function __construct()
     {
         $this->personnels = new ArrayCollection();
-        $this->inscriptionClientActivites = new ArrayCollection();
+        $this->inscriptionClientsActivites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -163,32 +165,8 @@ class Activite
         return $this;
     }
 
-    /**
-     * @return Collection<int, Personnel>
-     */
-    public function getPersonnels(): Collection
-    {
-        return $this->personnels;
-    }
 
-    public function addPersonnel(Personnel $personnel): self
-    {
-        if (!$this->personnels->contains($personnel)) {
-            $this->personnels->add($personnel);
-            $personnel->addAffectationPersonnelActivite($this);
-        }
 
-        return $this;
-    }
-
-    public function removePersonnel(Personnel $personnel): self
-    {
-        if ($this->personnels->removeElement($personnel)) {
-            $personnel->removeAffectationPersonnelActivite($this);
-        }
-
-        return $this;
-    }
 
     public function getActiviteAdresse(): ?Adresse
     {
@@ -214,38 +192,67 @@ class Activite
         return $this;
     }
 
-    /**
-     * @return Collection<int, InscriptionClientActivite>
-     */
-    public function getInscriptionClientActivites(): Collection
-    {
-        return $this->inscriptionClientActivites;
-    }
 
-    public function addInscriptionClientActivite(InscriptionClientActivite $inscriptionClientActivite): self
-    {
-        if (!$this->inscriptionClientActivites->contains($inscriptionClientActivite)) {
-            $this->inscriptionClientActivites->add($inscriptionClientActivite);
-            $inscriptionClientActivite->setInscriptionActivite($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInscriptionClientActivite(InscriptionClientActivite $inscriptionClientActivite): self
-    {
-        if ($this->inscriptionClientActivites->removeElement($inscriptionClientActivite)) {
-            // set the owning side to null (unless already changed)
-            if ($inscriptionClientActivite->getInscriptionActivite() === $this) {
-                $inscriptionClientActivite->setInscriptionActivite(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function __toString(): string
     {
         return $this->nomActivite;
+    }
+
+    /**
+     * @return Collection<int, Personnels>
+     */
+    public function getPersonnels(): Collection
+    {
+        return $this->personnels;
+    }
+
+    public function addPersonnel(Personnels $personnel): self
+    {
+        if (!$this->personnels->contains($personnel)) {
+            $this->personnels->add($personnel);
+            $personnel->addActivite($this);
+        }
+
+        return $this;
+    }
+
+    public function removePersonnel(Personnels $personnel): self
+    {
+        if ($this->personnels->removeElement($personnel)) {
+            $personnel->removeActivite($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, InscriptionClientsActivite>
+     */
+    public function getInscriptionClientsActivites(): Collection
+    {
+        return $this->inscriptionClientsActivites;
+    }
+
+    public function addInscriptionClientsActivite(InscriptionClientsActivite $inscriptionClientsActivite): self
+    {
+        if (!$this->inscriptionClientsActivites->contains($inscriptionClientsActivite)) {
+            $this->inscriptionClientsActivites->add($inscriptionClientsActivite);
+            $inscriptionClientsActivite->setActivites($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInscriptionClientsActivite(InscriptionClientsActivite $inscriptionClientsActivite): self
+    {
+        if ($this->inscriptionClientsActivites->removeElement($inscriptionClientsActivite)) {
+            // set the owning side to null (unless already changed)
+            if ($inscriptionClientsActivite->getActivites() === $this) {
+                $inscriptionClientsActivite->setActivites(null);
+            }
+        }
+
+        return $this;
     }
 }

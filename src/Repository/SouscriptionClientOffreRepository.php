@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\SoucriptionClientOffre;
+use App\Entity\SouscriptionClientOffre;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<SoucriptionClientOffre>
+ * @extends ServiceEntityRepository<SouscriptionClientOffre>
  *
- * @method SoucriptionClientOffre|null find($id, $lockMode = null, $lockVersion = null)
- * @method SoucriptionClientOffre|null findOneBy(array $criteria, array $orderBy = null)
- * @method SoucriptionClientOffre[]    findAll()
- * @method SoucriptionClientOffre[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method SouscriptionClientOffre|null find($id, $lockMode = null, $lockVersion = null)
+ * @method SouscriptionClientOffre|null findOneBy(array $criteria, array $orderBy = null)
+ * @method SouscriptionClientOffre[]    findAll()
+ * @method SouscriptionClientOffre[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SoucriptionClientOffreRepository extends ServiceEntityRepository
+class SouscriptionClientOffreRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, SoucriptionClientOffre::class);
+        parent::__construct($registry, SouscriptionClientOffre::class);
     }
 
-    public function save(SoucriptionClientOffre $entity, bool $flush = false): void
+    public function save(SouscriptionClientOffre $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class SoucriptionClientOffreRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(SoucriptionClientOffre $entity, bool $flush = false): void
+    public function remove(SouscriptionClientOffre $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class SoucriptionClientOffreRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return SoucriptionClientOffre[] Returns an array of SoucriptionClientOffre objects
+//     * @return SouscriptionClientOffre[] Returns an array of SouscriptionClientOffre objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class SoucriptionClientOffreRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?SoucriptionClientOffre
+//    public function findOneBySomeField($value): ?SouscriptionClientOffre
 //    {
 //        return $this->createQueryBuilder('s')
 //            ->andWhere('s.exampleField = :val')

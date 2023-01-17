@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ClientsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -35,6 +37,22 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $telephoneClient = null;
+
+    #[ORM\OneToMany(mappedBy: 'clients', targetEntity: InscriptionClientsActivite::class, orphanRemoval: true)]
+    private Collection $inscriptionClientsActivites;
+
+    #[ORM\OneToMany(mappedBy: 'clients', targetEntity: SouscriptionClientOffre::class, orphanRemoval: true)]
+    private Collection $souscriptionClientOffres;
+
+    #[ORM\ManyToOne(inversedBy: 'clients')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Adresse $adresse = null;
+
+    public function __construct()
+    {
+        $this->inscriptionClientsActivites = new ArrayCollection();
+        $this->souscriptionClientOffres = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -138,6 +156,78 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
     public function setTelephoneClient(?string $telephoneClient): self
     {
         $this->telephoneClient = $telephoneClient;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, InscriptionClientsActivite>
+     */
+    public function getInscriptionClientsActivites(): Collection
+    {
+        return $this->inscriptionClientsActivites;
+    }
+
+    public function addInscriptionClientsActivite(InscriptionClientsActivite $inscriptionClientsActivite): self
+    {
+        if (!$this->inscriptionClientsActivites->contains($inscriptionClientsActivite)) {
+            $this->inscriptionClientsActivites->add($inscriptionClientsActivite);
+            $inscriptionClientsActivite->setClients($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInscriptionClientsActivite(InscriptionClientsActivite $inscriptionClientsActivite): self
+    {
+        if ($this->inscriptionClientsActivites->removeElement($inscriptionClientsActivite)) {
+            // set the owning side to null (unless already changed)
+            if ($inscriptionClientsActivite->getClients() === $this) {
+                $inscriptionClientsActivite->setClients(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SouscriptionClientOffre>
+     */
+    public function getSouscriptionClientOffres(): Collection
+    {
+        return $this->souscriptionClientOffres;
+    }
+
+    public function addSouscriptionClientOffre(SouscriptionClientOffre $souscriptionClientOffre): self
+    {
+        if (!$this->souscriptionClientOffres->contains($souscriptionClientOffre)) {
+            $this->souscriptionClientOffres->add($souscriptionClientOffre);
+            $souscriptionClientOffre->setClients($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSouscriptionClientOffre(SouscriptionClientOffre $souscriptionClientOffre): self
+    {
+        if ($this->souscriptionClientOffres->removeElement($souscriptionClientOffre)) {
+            // set the owning side to null (unless already changed)
+            if ($souscriptionClientOffre->getClients() === $this) {
+                $souscriptionClientOffre->setClients(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAdresse(): ?Adresse
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?Adresse $adresse): self
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }

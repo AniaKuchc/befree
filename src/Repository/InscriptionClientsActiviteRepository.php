@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\InscriptionClientActivite;
+use App\Entity\InscriptionClientsActivite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<InscriptionClientActivite>
+ * @extends ServiceEntityRepository<InscriptionClientsActivite>
  *
- * @method InscriptionClientActivite|null find($id, $lockMode = null, $lockVersion = null)
- * @method InscriptionClientActivite|null findOneBy(array $criteria, array $orderBy = null)
- * @method InscriptionClientActivite[]    findAll()
- * @method InscriptionClientActivite[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method InscriptionClientsActivite|null find($id, $lockMode = null, $lockVersion = null)
+ * @method InscriptionClientsActivite|null findOneBy(array $criteria, array $orderBy = null)
+ * @method InscriptionClientsActivite[]    findAll()
+ * @method InscriptionClientsActivite[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class InscriptionClientActiviteRepository extends ServiceEntityRepository
+class InscriptionClientsActiviteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, InscriptionClientActivite::class);
+        parent::__construct($registry, InscriptionClientsActivite::class);
     }
 
-    public function save(InscriptionClientActivite $entity, bool $flush = false): void
+    public function save(InscriptionClientsActivite $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class InscriptionClientActiviteRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(InscriptionClientActivite $entity, bool $flush = false): void
+    public function remove(InscriptionClientsActivite $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class InscriptionClientActiviteRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return InscriptionClientActivite[] Returns an array of InscriptionClientActivite objects
+//     * @return InscriptionClientsActivite[] Returns an array of InscriptionClientsActivite objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class InscriptionClientActiviteRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?InscriptionClientActivite
+//    public function findOneBySomeField($value): ?InscriptionClientsActivite
 //    {
 //        return $this->createQueryBuilder('i')
 //            ->andWhere('i.exampleField = :val')

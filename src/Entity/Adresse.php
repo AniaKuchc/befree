@@ -27,16 +27,16 @@ class Adresse
     #[ORM\Column(length: 255)]
     private ?string $villeAdresse = null;
 
-    #[ORM\OneToMany(mappedBy: 'adresse', targetEntity: Client::class, orphanRemoval: true)]
-    private Collection $adresseClient;
-
     #[ORM\OneToMany(mappedBy: 'activiteAdresse', targetEntity: Activite::class)]
     private Collection $activites;
 
+    #[ORM\OneToMany(mappedBy: 'adresse', targetEntity: Clients::class, orphanRemoval: true)]
+    private Collection $clients;
+
     public function __construct()
     {
-        $this->adresseClient = new ArrayCollection();
         $this->activites = new ArrayCollection();
+        $this->clients = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,35 +92,6 @@ class Adresse
         return $this;
     }
 
-    /**
-     * @return Collection<int, Client>
-     */
-    public function getAdresseClient(): Collection
-    {
-        return $this->adresseClient;
-    }
-
-    public function addAdresseClient(Client $adresseClient): self
-    {
-        if (!$this->adresseClient->contains($adresseClient)) {
-            $this->adresseClient->add($adresseClient);
-            $adresseClient->setAdresse($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAdresseClient(Client $adresseClient): self
-    {
-        if ($this->adresseClient->removeElement($adresseClient)) {
-            // set the owning side to null (unless already changed)
-            if ($adresseClient->getAdresse() === $this) {
-                $adresseClient->setAdresse(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Activite>
@@ -155,5 +126,35 @@ class Adresse
     public function __toString(): string
     {
         return $this->numeroAdresse . ' ' . $this->rueAdresse . ' ' . $this->codePostalAdresse . ' ' . $this->villeAdresse;
+    }
+
+    /**
+     * @return Collection<int, Clients>
+     */
+    public function getClients(): Collection
+    {
+        return $this->clients;
+    }
+
+    public function addClient(Clients $client): self
+    {
+        if (!$this->clients->contains($client)) {
+            $this->clients->add($client);
+            $client->setAdresse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClient(Clients $client): self
+    {
+        if ($this->clients->removeElement($client)) {
+            // set the owning side to null (unless already changed)
+            if ($client->getAdresse() === $this) {
+                $client->setAdresse(null);
+            }
+        }
+
+        return $this;
     }
 }
