@@ -28,6 +28,7 @@ class ActiviteCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+
         return [
             AssociationField::new('activitePrestataire', 'Prestataire de l\'activite'),
             AssociationField::new('ActiviteType', 'Type d\'activite'),

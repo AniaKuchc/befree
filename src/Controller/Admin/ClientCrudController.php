@@ -25,7 +25,7 @@ class ClientCrudController extends AbstractCrudController
             TextField::new('prenomClient', 'Prénom'),
             EmailField::new('mailClient', 'Email'),
             TextField::new('motDePasseClient', 'Mot de Passe')->hideOnIndex()->hideWhenUpdating(),
-            AssociationField::new('adresse', 'Adresse de l\'activite'),
+            AssociationField::new('adresse', 'Adresse du client')->renderAsEmbeddedForm(),
         ];
     }
 
