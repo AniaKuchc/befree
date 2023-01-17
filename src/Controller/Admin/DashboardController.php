@@ -6,6 +6,7 @@ use App\Entity\Activite;
 use App\Entity\Adresse;
 use App\Entity\Client;
 use App\Entity\Offre;
+use App\Entity\Personnels;
 use App\Entity\Prestataire;
 use App\Entity\Randonnee;
 use App\Entity\TypeActivite;
@@ -57,5 +58,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Adresse', "fa-solid fa-address-book", Adresse::class);
         yield MenuItem::linkToCrud('Offre', "fa-solid fa-receipt", Offre::class);
         yield MenuItem::linkToCrud('Client', "fa-solid fa-users-line", Client::class);
+        yield MenuItem::linkToCrud('Personnels', "fa-solid fa-users-line", Personnels::class);
     }
 }
