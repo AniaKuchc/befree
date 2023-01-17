@@ -31,7 +31,8 @@ class AdresseCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('adresse');
+            ->setEntityLabelInSingular('cdresse')
+            ->setEntityLabelInPlural('Adresses');
     }
 
     public function configureFilters(Filters $filters): Filters
