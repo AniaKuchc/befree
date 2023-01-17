@@ -9,16 +9,16 @@
 <div class="example-wrapper">
     <h1>Formulaire d’inscription</h1>
 
-    {{ form(form_premiere_inscription) }}
+    {# {{ form(form_premiere_inscription) }} #}
     {# {{ dump (form_premiere_inscription)}} #}
 
-    {# {{ form_start(form_premiere_inscription)}}
+    {{ form_start(form_premiere_inscription)}}
         {{ form_row(form_premiere_inscription.prenomClient)}}
         {{ form_row(form_premiere_inscription.nomClient)}}
         {{ form_row(form_premiere_inscription.mailClient)}}
         {{ form_row(form_premiere_inscription.motDePasseClient)}}
 
-    <ul class="client_premiere_inscription_form_adresse">
+    {# <ul class="client_premiere_inscription_form_adresse">
         {% for adresse in form_premiere_inscription.adresse %}
             <li>{{ form_row(adresse.numeroAdresse)}}</li>
         {% endfor %}
@@ -28,7 +28,7 @@
                 {{ form_row(row)}}
             {% endfor %}
         </div> #}
-        {# {{ form_end(form_premiere_inscription)}} #}
+        {{ form_end(form_premiere_inscription)}}
     
 </div>
 {% endblock %}
