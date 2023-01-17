@@ -17,13 +17,13 @@
 
         <nav>   
             <div class='nav__logo'>
-                <img src='./assets/img/logo_sm.png'>
+                <img src="{{ asset('/img/logo.png') }}">
             </div>
 
             <div class='nav__links'>
                 <ul>
-                    <li><a href="">Accueil</a></li>
-                    <li><a href="">Découvrir</a></li>
+                    <li><a href="{{ path('app_default') }}">Accueil</a></li>
+                    <li><a href="{{ path('app_dashboard') }}">Tableau de bord</a></li>
                     <li><a href="">Nos offres</a></li>
                     <li><a href="">Connexion</a></li>
                 </ul>
