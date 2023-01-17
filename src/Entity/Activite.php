@@ -32,11 +32,11 @@ class Activite
     private ?bool $afficherActivite = null;
 
     #[ORM\ManyToOne(inversedBy: 'activites')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Prestataire $activitePrestataire = null;
 
     #[ORM\ManyToOne(inversedBy: 'activites')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?TypeActivite $ActiviteType = null;
 
     #[ORM\ManyToOne(inversedBy: 'activites')]
