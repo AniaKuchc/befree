@@ -26,7 +26,8 @@ class TypeActiviteCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Type d\'activité');
+            ->setEntityLabelInSingular('type d\'activité')
+            ->setEntityLabelInPlural('Type d\'activités');
     }
 
     public function configureFilters(Filters $filters): Filters

@@ -33,7 +33,8 @@ class RandonneeCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Randonnée');
+            ->setEntityLabelInSingular('randonnée')
+            ->setEntityLabelInPlural('Randonnées');
     }
 
     public function configureFilters(Filters $filters): Filters

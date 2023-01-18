@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -17,6 +18,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Filter\DateTimeFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\NumericFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
+
 
 class ActiviteCrudController extends AbstractCrudController
 {
@@ -30,15 +32,16 @@ class ActiviteCrudController extends AbstractCrudController
     {
 
         return [
-            AssociationField::new('activitePrestataire', 'Prestataire de l\'activite'),
-            AssociationField::new('ActiviteType', 'Type d\'activite'),
-            AssociationField::new('activiteRandonnee', 'Randonnee'),
+            AssociationField::new('activitePrestataire', 'Prestataire de l\'activite')->setFormTypeOption('required', false),
+            AssociationField::new('ActiviteType', 'Type d\'activite')->setFormTypeOption('required', false),
+            AssociationField::new('activiteRandonnee', 'Randonnee')->setFormTypeOption('required', false),
             TextField::new('nomActivite', 'Nom'),
             TextEditorField::new('descriptionActivite', 'Description'),
+            ImageField::new('ActiviteImage', 'Image')->setUploadDir('assets/img/activite')->setUploadedFileNamePattern('[randomhash].[extension]')->hideOnIndex(),
             DateTimeField::new('dateActivite', 'date'),
             NumberField::new('placeMaximum', 'Place maximum'),
             BooleanField::new('afficherActivite', 'Afficher ?'),
-            AssociationField::new('activiteAdresse', 'Adresse de l\'activite'),
+            AssociationField::new('activiteAdresse', 'Adresse de l\'activite')->setFormTypeOption('required', false),
             AssociationField::new('activiteOffre', 'Offre dont dépend l\'activite'),
         ];
     }
@@ -46,7 +49,8 @@ class ActiviteCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Activite');
+            ->setEntityLabelInSingular('activite')
+            ->setEntityLabelInPlural('Activites');
     }
 
     public function configureFilters(Filters $filters): Filters
