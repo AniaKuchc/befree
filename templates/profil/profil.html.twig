@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+{{ dump(user) }}
+
+<ul>
+    <li>{{user.prenom}} {{user.nom}} </li>
+    <li>Email: {{user.email}}</li>
+    
+</ul>
+
+{% endblock %}

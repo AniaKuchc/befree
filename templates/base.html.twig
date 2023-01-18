@@ -22,14 +22,12 @@
 
             <div class='nav__links'>
                 <ul>
-                    <li><a href="{{ path('app_default') }}">Accueil</a></li>
-                    {% if is_granted('ROLE_USER') %}            
-                    <li><a href="{{ path('app_dashboard') }}">Tableau de bord</a></li>                   
-
-                    {% endif %}
-                    <li><a href="">Nos offres</a></li>                   
+                    <li><a href="{{ path('app_default') }}">Accueil</a></li>                
+                                  
                     
                     {% if is_granted('ROLE_USER') %}
+                    <li><a href="{{ path('app_dashboard') }}">Tableau de bord</a></li>
+                    <li><a href="{{ path('app_profil') }}">Mon profil</a></li>
                     <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
                      {% else %}
                     <li><a href="{{ path('app_login') }}">Connexion</a></li>
