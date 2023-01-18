@@ -12,6 +12,7 @@
 
         {% for activity in activities %}
             {% if activity.activiteRandonnee is same as null and activity.afficherActivite is same as true %}
+            {{activity.activiteImage}}
             <div class="col-4 my-2">
                 <div class="card h-100 cardBackground">
                     <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top" alt="Image _Activite_1">
