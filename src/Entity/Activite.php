@@ -22,7 +22,7 @@ class Activite
     #[ORM\Column(length: 255)]
     private ?string $descriptionActivite = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateActivite = null;
 
     #[ORM\Column]
@@ -56,6 +56,9 @@ class Activite
 
     #[ORM\OneToMany(mappedBy: 'activites', targetEntity: InscriptionClientsActivite::class, orphanRemoval: true)]
     private Collection $inscriptionClientsActivites;
+
+    #[ORM\Column(length: 255)]
+    private ?string $activiteImage = null;
 
 
     public function __construct()
@@ -252,6 +255,18 @@ class Activite
                 $inscriptionClientsActivite->setActivites(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getActiviteImage(): ?string
+    {
+        return $this->activiteImage;
+    }
+
+    public function setActiviteImage(string $activiteImage): self
+    {
+        $this->activiteImage = $activiteImage;
 
         return $this;
     }

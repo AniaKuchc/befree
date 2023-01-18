@@ -28,7 +28,8 @@ class OffreCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('offre');
+            ->setEntityLabelInSingular('offre')
+            ->setEntityLabelInPlural('Offres');
     }
 
     public function configureFilters(Filters $filters): Filters

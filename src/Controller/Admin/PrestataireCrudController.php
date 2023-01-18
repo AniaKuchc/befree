@@ -35,7 +35,8 @@ class PrestataireCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Prestataire');
+            ->setEntityLabelInSingular('prestataire')
+            ->setEntityLabelInPlural('Prestataires');
     }
 
     public function configureFilters(Filters $filters): Filters
