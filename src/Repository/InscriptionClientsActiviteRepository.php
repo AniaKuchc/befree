@@ -39,20 +39,17 @@ class InscriptionClientsActiviteRepository extends ServiceEntityRepository
         }
     }
 
-    // public function activityInscription(int $clientId, int $activiteId)
-    // {
-    //     $query = $this->createQueryBuilder('insc')
-    //         ->insert('inscription_clients_activite')
-    //         ->values(
-    //             [
-    //                 'clients' => ':cli',
-    //                 'activites' => ':act',
-    //             ]
-    //         )
-    //         ->setParameter('cli', $clientId)
-    //         ->setParameter('act', $activiteId)
-    //         ->execute();
-    // }
+    public function findOneById(int $activiteId, int $clientId): ?InscriptionClientsActivite
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.activites = :act')
+            ->andWhere('i.clients = :cli')
+            ->setParameter('act', $activiteId)
+            ->setParameter('cli', $clientId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 
     //    /**
     //     * @return InscriptionClientsActivite[] Returns an array of InscriptionClientsActivite objects
