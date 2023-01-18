@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Activite;
 use App\Entity\Adresse;
+use App\Entity\CatalogueRandonnee;
 use App\Entity\Client;
 use App\Entity\Clients;
 use App\Entity\Offre;
@@ -60,5 +61,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Offre', "fa-solid fa-receipt", Offre::class);
         yield MenuItem::linkToCrud('Personnels', "fa-solid fa-users-line", Personnels::class);
         yield MenuItem::linkToCrud('Clients', "fa-solid fa-money-check", Clients::class);
+        yield MenuItem::linkToCrud('CatalogueRandonnee', "fa-solid fa-book-bookmark", CatalogueRandonnee::class);
     }
 }

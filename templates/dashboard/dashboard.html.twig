@@ -9,22 +9,21 @@
 
     <div class="row col-8 p-4 my-4 containerDashboardColor">
     <h2 class="mb-2 textDashboardColor">Mes activités à venir : </h2>
-
+    <button class="btn btn-primary btnPreviousActivite">Précédent</button>
         {% for activity in activities %}
-            {% if activity.activiteRandonnee is same as null and activity.afficherActivite is same as true %}
-            {{activity.activiteImage}}
-            <div class="col-4 my-2">
-                <div class="card h-100 cardBackground">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top" alt="Image _Activite_1">
-                    <div class="p-3">
+            {% if activity.activiteRandonnee is same as null and activity.afficherActivite is same as true  %}
+            <div class="col-4 my-2 inactiveActivite">
+                <div class="card cardBackground h-100">
+                    <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Activite">
+                    <div class="p-3 card-body">
                         <small class="text-muted">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
                     </div>
-                <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class='btn btn-primary'>Voir</a>
+                    <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
                 </div>
             </div>
             {% endif %}
         {% endfor %}
-
+    <button class="btn btn-primary btnNextActivite">Suivant</button>
     </div>
 
     <div class="row col-8 p-4 my-4 containerDashboardColor">
@@ -32,11 +31,12 @@
         {% for activity in activities %}
             {% if activity.activiteRandonnee != null and activity.afficherActivite is same as true %}
             <div class="col-4 my-2">
-                <div class="card h-100 cardBackground">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Image _Activite_1">
-                    <div class="p-3">
+                <div class="card cardBackground h-100">
+                    <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Activite">
+                    <div class="p-3 card-body">
                         <small class="text-muted">{{ activity.nomActivite }}</small>
                     </div>
+                    <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
                 </div>
             </div>
             {% endif %}
@@ -45,35 +45,40 @@
 
     <div class="row col-8 p-4 my-4 containerDashboardColor">
     <h2 class="mb-2 textDashboardColor">Les prochaines inscriptions : </h2>
-    
+    <button class="btn btn-primary btnPreviousInscription">Précédent</button>
         {% for activity in activities %}
             {% if activity.activiteRandonnee is same as null and activity.afficherActivite is same as true and "now"|date('Y-m-d') < activity.dateActivite|date('Y-m-d') %}
-            <div class="col-4 my-2">
-                <div class="card h-100 cardBackground">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/062.webp" class="card-img-top" alt="Image _Activite_1">
-                    <div class="p-3">
+            <div class="col-4 my-2 inactiveInscription">
+                <div class="card cardBackground h-100">
+                    <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Activite">
+                    <div class="p-3 card-body">
                         <small class="text-muted">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
                     </div>
+                    <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
                 </div>
             </div>
             {% endif %}
         {% endfor %}
+        <button class="btn btn-primary btnNextInscription">Suivant</button>
     </div>
 
     <div class="row col-8 p-4 my-4 containerDashboardColor">
     <h2 class="mb-2 textDashboardColor">Historique de mes activités : </h2>
+    <button class="btn btn-primary btnPreviousHistorique">Précédent</button>
         {% for activity in activities %}
             {% if activity.activiteRandonnee is same as null and "now"|date('Y-m-d') > activity.dateActivite|date('Y-m-d') %}
-            <div class="col-4 my-2">
-                <div class="card h-100 cardBackground">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp" class="card-img-top" alt="Image _Activite_1">
-                    <div class="p-3">
+            <div class="col-4 my-2 inactiveHistorique">
+                <div class="card cardBackground h-100">
+                    <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Activite">
+                    <div class="p-3 card-body">
                         <small class="text-muted">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
                     </div>
+                    <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
                 </div>
             </div>
             {% endif %}
         {% endfor %}
+        <button class="btn btn-primary btnNextHistorique">Suivant</button>
     </div>
 
 {% endblock %}

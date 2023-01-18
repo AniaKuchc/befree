@@ -16,7 +16,6 @@ body {
 h1 {
   font-size: 36px;
   color: $secondaryColor;
-
 }
 
 h2 {
@@ -159,6 +158,24 @@ header {
 
 .cardBackground {
   background-color: #f7f7f7;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw !important;
+  object-fit: cover;
+}
+
+.inactiveActivite {
+  display: none;
+}
+
+.inactiveInscription {
+  display: none;
+}
+
+.inactiveHistorique {
+  display: none;
 }
 
 .function__card__number {

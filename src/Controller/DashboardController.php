@@ -14,7 +14,7 @@ class DashboardController extends AbstractController
     {
 
 
-        return $this->render('dashboard/index.html.twig', [
+        return $this->render('dashboard/dashboard.html.twig', [
             'activities' => $activiteRepository->findActivities(),
         ]);
     }

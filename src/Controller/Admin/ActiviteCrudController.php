@@ -37,7 +37,7 @@ class ActiviteCrudController extends AbstractCrudController
             AssociationField::new('activiteRandonnee', 'Randonnee')->setFormTypeOption('required', false),
             TextField::new('nomActivite', 'Nom'),
             TextEditorField::new('descriptionActivite', 'Description'),
-            ImageField::new('ActiviteImage', 'Image')->setUploadDir('assets/img/activite')->setUploadedFileNamePattern('[randomhash].[extension]')->hideOnIndex(),
+            ImageField::new('ActiviteImage', 'Image')->setUploadDir('public/img/activite')->setUploadedFileNamePattern('[randomhash].[extension]')->hideOnIndex(),
             DateTimeField::new('dateActivite', 'date'),
             NumberField::new('placeMaximum', 'Place maximum'),
             BooleanField::new('afficherActivite', 'Afficher ?'),
