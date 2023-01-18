@@ -9,12 +9,13 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\Clients;
 use App\Entity\Adresse;
 use App\Form\AdresseFormType;
-use App\Form\ClientPremiereInscriptionFormType;
+use App\Form\ClientsUserFormType;
 use App\Repository\AdresseRepository;
 use App\Repository\ClientsRepository;
 use App\Repository\PrestataireRepository;
 use App\Repository\TypePrestataireRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class LoginController extends AbstractController
 {
@@ -40,24 +41,33 @@ class LoginController extends AbstractController
         throw new \Exception('Don\'t forget to activate logout in security.yaml');
     }
 
-    #[Route('/inscription', name: 'premiereInscription')]
-    public function premiereInscription(Request $request, ClientsRepository $clientsRepository, AdresseRepository $adresseRepository): Response
+    private $userPasswordHasherInterface;
+
+    public function __construct(UserPasswordHasherInterface $userPasswordHasherInterface)
     {
-        $clients = new Clients;
+        $this->userPasswordHasherInterface = $userPasswordHasherInterface;
+    }
 
+    #[Route('/inscription', name: 'premiereInscription')]
+    public function adresseInscription(Request $request, ClientsRepository $clientsRepository, AdresseRepository $adresseRepository): Response
+    {
         $adresse = new Adresse;
-        // $clients->getAdresse()->add($adresse);
+        $clients = new Clients;
+        $adresse->getClients()->add($clients);
 
-        // $adresse->setClient($client);
-        // $client->addAdresse($adresse);
-
-        $form = $this->createForm(ClientPremiereInscriptionFormType::class, $clients);
+        $form = $this->createForm(AdresseFormType::class, $adresse);
         $form->handleRequest($request);
-
         $message = '';
+        // $id = $adresseRepository->findAdresses();
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                $clientsRepository->save($clients, true);
+                $clients->setPassword(
+                    $this->userPasswordHasherInterface->hashPassword(
+                        $clients,
+                        "password"
+                    )
+                );
+                $clients->setAdresse($adresse);
                 $adresseRepository->save($adresse, true);
                 return $this->redirectToRoute('app_dashboard');
             } else {
@@ -65,10 +75,8 @@ class LoginController extends AbstractController
             }
         }
 
-        return $this->render('login/premiere_inscription.html.twig', [
-            'clients' => $clients,
-            // 'adresse' => $adresse,
-            'form_premiere_inscription' => $form->createView(),
+        return $this->render('login/adresse_inscription.html.twig', [
+            'form_adresse_inscription' => $form,
             'message' => $message,
         ]);
     }

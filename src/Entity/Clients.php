@@ -47,8 +47,8 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToOne(inversedBy: 'clients')]
     #[ORM\JoinColumn(nullable: false)]
-    // private ?Adresse $adresse = null;
-    private ?Collection $adresse;
+    private ?Adresse $adresse = null;
+    // private Collection $adresse;
 
     public function __construct()
     {
@@ -227,15 +227,15 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
      * @return Collection<int, Adresse>
      */
 
-    // public function getAdresse(): ?Adresse
-    // {
-    //     return $this->adresse;
-    // }
-
-    public function getAdresse(): ?Collection
+    public function getAdresse(): ?Adresse
     {
         return $this->adresse;
     }
+
+    // public function getAdresse(): Collection
+    // {
+    //     return $this->adresse;
+    // }
 
     public function setAdresse(Adresse $adresse): self
     {

@@ -30,7 +30,7 @@ class Adresse
     #[ORM\OneToMany(mappedBy: 'activiteAdresse', targetEntity: Activite::class)]
     private Collection $activites;
 
-    #[ORM\OneToMany(mappedBy: 'adresse', targetEntity: Clients::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'adresse', targetEntity: Clients::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $clients;
 
     public function __construct()
