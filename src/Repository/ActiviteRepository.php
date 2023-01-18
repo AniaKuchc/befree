@@ -50,6 +50,9 @@ class ActiviteRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+
+
+
     //    public function findOneBySomeField($value): ?Activite
     //    {
     //        return $this->createQueryBuilder('a')

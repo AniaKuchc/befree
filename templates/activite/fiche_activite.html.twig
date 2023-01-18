@@ -1,14 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ActiviteController!{% endblock %}
+{% block title %}{{activite.nomActivite}}{% endblock %}
 
 {% block body %}
 
 
-<div class="example-wrapper">
-    <h1>FICHE ACTIVITE</h1>
+<main>
+<div class='ficheActivite__title d-flex justify-content-between mt-5 mb-3'>
+    <h1>{{activite.nomActivite}}</h1>
+    <a href='{{ path('app_inscription_activite', { id: activite.id }) }}' class='btn btn-warning'>Je m'inscris</a>
+</div>
 
     {{ dump(activite) }}
 
-</div>
+    <section class='ficheActivite'>
+
+        <ul>
+        <li>{{activite.dateActivite|format_datetime(pattern="eeee d MMMM y", locale='fr')}}</li>
+        <li>Places restantes: {{activite.placeMaximum}}</li>
+        </ul>
+
+        <h2>Description</h2>
+        <p>{{activite.descriptionActivite}}</p>
+
+    </section>
+    {{ dump(client) }}
+
+</main>
 {% endblock %}

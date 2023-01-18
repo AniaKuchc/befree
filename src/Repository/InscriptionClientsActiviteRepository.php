@@ -39,28 +39,43 @@ class InscriptionClientsActiviteRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return InscriptionClientsActivite[] Returns an array of InscriptionClientsActivite objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('i')
-//            ->andWhere('i.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('i.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    // public function activityInscription(int $clientId, int $activiteId)
+    // {
+    //     $query = $this->createQueryBuilder('insc')
+    //         ->insert('inscription_clients_activite')
+    //         ->values(
+    //             [
+    //                 'clients' => ':cli',
+    //                 'activites' => ':act',
+    //             ]
+    //         )
+    //         ->setParameter('cli', $clientId)
+    //         ->setParameter('act', $activiteId)
+    //         ->execute();
+    // }
 
-//    public function findOneBySomeField($value): ?InscriptionClientsActivite
-//    {
-//        return $this->createQueryBuilder('i')
-//            ->andWhere('i.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    /**
+    //     * @return InscriptionClientsActivite[] Returns an array of InscriptionClientsActivite objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('i')
+    //            ->andWhere('i.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('i.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?InscriptionClientsActivite
+    //    {
+    //        return $this->createQueryBuilder('i')
+    //            ->andWhere('i.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }
