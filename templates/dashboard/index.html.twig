@@ -5,10 +5,10 @@
 {% block body %}
 
 
-    <h2 class="mt-5 mb-3 textDashboardColor titleWidthDashboardColor text-start">Mon tableau de bord</h2>
+    <h1 class="mt-5 mb-3 textDashboardColor titleWidthDashboardColor text-start">Mon tableau de bord</h1>
 
     <div class="row col-8 p-4 my-4 containerDashboardColor">
-    <h3 class="mb-2 textDashboardColor">Mes activités à venir : </h3>
+    <h2 class="mb-2 textDashboardColor">Mes activités à venir : </h2>
 
         {% for activity in activities %}
             {% if activity.activiteRandonnee is same as null and activity.afficherActivite is same as true %}
@@ -19,6 +19,7 @@
                     <div class="p-3">
                         <small class="text-muted">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
                     </div>
+                <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class='btn btn-primary'>Voir</a>
                 </div>
             </div>
             {% endif %}
@@ -27,7 +28,7 @@
     </div>
 
     <div class="row col-8 p-4 my-4 containerDashboardColor">
-    <h3 class="mb-2 textDashboardColor">Mes randonnées du mois</h3>
+    <h2 class="mb-2 textDashboardColor">Mes randonnées du mois</h2>
         {% for activity in activities %}
             {% if activity.activiteRandonnee != null and activity.afficherActivite is same as true %}
             <div class="col-4 my-2">
@@ -43,7 +44,7 @@
     </div>
 
     <div class="row col-8 p-4 my-4 containerDashboardColor">
-    <h3 class="mb-2 textDashboardColor">Les prochaines inscriptions : </h3>
+    <h2 class="mb-2 textDashboardColor">Les prochaines inscriptions : </h2>
     
         {% for activity in activities %}
             {% if activity.activiteRandonnee is same as null and activity.afficherActivite is same as true and "now"|date('Y-m-d') < activity.dateActivite|date('Y-m-d') %}
@@ -60,7 +61,7 @@
     </div>
 
     <div class="row col-8 p-4 my-4 containerDashboardColor">
-    <h3 class="mb-2 textDashboardColor">Historique de mes activités : </h3>
+    <h2 class="mb-2 textDashboardColor">Historique de mes activités : </h2>
         {% for activity in activities %}
             {% if activity.activiteRandonnee is same as null and "now"|date('Y-m-d') > activity.dateActivite|date('Y-m-d') %}
             <div class="col-4 my-2">
