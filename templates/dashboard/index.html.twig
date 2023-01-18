@@ -19,6 +19,7 @@
                         <small class="text-muted">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
                     </div>
                 </div>
+                <a href='{{ path('app_fiche_activite', { id: activite.id })) }}' class='btn btn-primary'>Voir</a>
             </div>
             {% endif %}
         {% endfor %}
