@@ -28,7 +28,9 @@ class ClientsUserFormType extends AbstractType
                 'second_options' => ['label' => 'Confirmer le mot de passe'],
                 'invalid_message' => ['Mot de passe doivent être identiques.'],
             ])
-            ->add('inscrire', SubmitType::class);
+            ->add('inscrire', SubmitType::class, [
+                'attr' => ['class' => 'button'],
+            ]);
     }
 
 
