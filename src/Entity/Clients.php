@@ -42,7 +42,7 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'clients', targetEntity: InscriptionClientsActivite::class, orphanRemoval: true)]
     private Collection $inscriptionClientsActivites;
 
-    #[ORM\OneToMany(mappedBy: 'clients', targetEntity: SouscriptionClientOffre::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'clients', targetEntity: SouscriptionClientOffre::class, orphanRemoval: true, cascade: ["persist"])]
     private Collection $souscriptionClientOffres;
 
     #[ORM\ManyToOne(inversedBy: 'clients')]

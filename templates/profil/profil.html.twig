@@ -3,6 +3,13 @@
 {% block title %}Modification de l'utilisateur{% endblock %}
 
 {% block body %}
+{{ dump(user) }}
+
+<ul>
+    <li>{{user.prenomClient}} {{user.nomClient}} </li>
+    <li>Email: {{user.email}}</li>
+    
+</ul>
 
     <div class="container">
         <h1 class="mt-4">Formulaire de modification des informations personelles</h1>
