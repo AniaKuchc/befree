@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\Adresse;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ClientsRepository::class)]
 class Clients implements UserInterface, PasswordAuthenticatedUserInterface
@@ -29,6 +30,9 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[Assert\NotBlank]
+    private ?string $plainPassword = null;
 
     #[ORM\Column(length: 255)]
     private ?string $nomClient = null;
@@ -117,13 +121,29 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPlainPassword(): string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
     /**
      * @see UserInterface
      */
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->plainPassword = null;
     }
 
     public function getNomClient(): ?string
