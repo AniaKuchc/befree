@@ -6,27 +6,50 @@
 
 
     <h1 class="mt-5 mb-3 textDashboardColor titleWidthDashboardColor text-start">Mon tableau de bord</h1>
-
-    <div class="row col-8 p-4 my-4 containerDashboardColor">
-    <h2 class="mb-2 textDashboardColor">Mes activités à venir : </h2>
-    <button class="btn btn-primary btnPreviousActivite">Précédent</button>
-        {% for activity in activities %}
-            {% if activity.activiteRandonnee is same as null and activity.afficherActivite is same as true  %}
-            <div class="col-4 my-2 inactiveActivite">
-                <div class="card cardBackground h-100">
-                    <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Activite">
-                    <div class="p-3 card-body">
-                        <small class="text-muted">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
+{# experience bootstrap #}
+    {# <div class="row col-9 p-3 my-4 containerDashboardColor">
+        <h2 class="mb-2 textDashboardColor">Mes activités à venir : </h2>
+        <div class="d-flex align-items-center ContainerActivite h-100">
+            <div class="btnPreviousActivite col-1 text-center d-flex align-items-center justify-content-center btnColor "><svg class='arrowColor arrowPreviousActivite ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">-<path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></div>
+                {% for activity in activities %}
+                    {% if activity.activiteRandonnee is same as null and activity.afficherActivite is same as true and "now"|date('Y-m-d') < activity.dateActivite|date('Y-m-d')   %}
+                    <div class="col-3 my-2 mx-5 inactiveActivite">
+                        <div class="card cardBackground ">
+                            <img src="../img/activite/{{ activity.activiteImage }}" class="card-img ContainerCard" alt="Image _Activite">
+                            <div class="p-3 card-img-overlay d-flex">
+                                <small class="text-muted ">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
+                                 <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
+                            </div>
+                        </div>
                     </div>
-                    <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
-                </div>
-            </div>
-            {% endif %}
-        {% endfor %}
-    <button class="btn btn-primary btnNextActivite">Suivant</button>
+                    {% endif %}
+                {% endfor %}
+            <div class="btnNextActivite col-1 text-center d-flex align-items-center justify-content-center btnColor "><svg class='arrowColor arrowNextActivite ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg></div>    
+        </div>
+    </div> #}
+
+        <div class="row col-9 p-3 my-4 containerDashboardColor">
+        <h2 class="mb-2 textDashboardColor">Mes activités à venir : </h2>
+        <div class="d-flex justify-content-around align-items-center ContainerActivite">
+            <div class="btnPreviousActivite col-1 text-center d-flex align-items-center justify-content-center btnColor "><svg class='arrowColor arrowPreviousActivite ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">-<path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></div>
+                {% for activity in activities %}
+                    {% if activity.activiteRandonnee is same as null and activity.afficherActivite is same as true and "now"|date('Y-m-d') < activity.dateActivite|date('Y-m-d')   %}
+                    <div class="col-3 my-2 mx-5 inactiveActivite">
+                        <div class="card cardBackground h-100 ContainerCard">
+                            <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Activite">
+                            <div class="p-3 card-body">
+                                <small class="text-muted ">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
+                            </div>
+                            <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            <div class="btnNextActivite col-1 text-center d-flex align-items-center justify-content-center btnColor "><svg class='arrowColor arrowNextActivite ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg></div>    
+        </div>
     </div>
 
-    <div class="row col-8 p-4 my-4 containerDashboardColor">
+    <div class="row col-9 p-4 my-4 containerDashboardColor">
     <h2 class="mb-2 textDashboardColor">Mes randonnées du mois</h2>
         {% for activity in activities %}
             {% if activity.activiteRandonnee != null and activity.afficherActivite is same as true %}
@@ -43,42 +66,46 @@
         {% endfor %}
     </div>
 
-    <div class="row col-8 p-4 my-4 containerDashboardColor">
-    <h2 class="mb-2 textDashboardColor">Les prochaines inscriptions : </h2>
-    <button class="btn btn-primary btnPreviousInscription">Précédent</button>
-        {% for activity in activities %}
-            {% if activity.activiteRandonnee is same as null and activity.afficherActivite is same as true and "now"|date('Y-m-d') < activity.dateActivite|date('Y-m-d') %}
-            <div class="col-4 my-2 inactiveInscription">
-                <div class="card cardBackground h-100">
-                    <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Activite">
-                    <div class="p-3 card-body">
-                        <small class="text-muted">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
+    <div class="row col-9 p-3 my-4 containerDashboardColor">
+        <h2 class="mb-2 textDashboardColor">Les prochaines inscriptions : </h2>
+        <div class="d-flex justify-content-around align-items-center ContainerInscription">
+            <div class="btnPreviousInscription col-1 text-center d-flex align-items-center justify-content-center btnColor "><svg class='arrowColor arrowPreviousInscription ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">-<path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></div>
+                {% for activity in activities %}
+                    {% if activity.activiteRandonnee is same as null  and activity.afficherActivite is same as true and "now"|date('Y-m-d') < activity.dateActivite|date('Y-m-d')  %}
+                    <div class="col-3 my-2 mx-5 inactiveInscription">
+                        <div class="card cardBackground h-100 ContainerCard">
+                            <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Activite">
+                            <div class="p-3 card-body">
+                                <small class="text-muted">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
+                            </div>
+                            <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
+                        </div>
                     </div>
-                    <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
-                </div>
-            </div>
-            {% endif %}
-        {% endfor %}
-        <button class="btn btn-primary btnNextInscription">Suivant</button>
+                    {% endif %}
+                {% endfor %}
+            <div class="btnNextInscription col-1 text-center d-flex align-items-center justify-content-center btnColor "><svg class='arrowColor arrowNextInscription ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg></div>    
+        </div>
     </div>
 
-    <div class="row col-8 p-4 my-4 containerDashboardColor">
-    <h2 class="mb-2 textDashboardColor">Historique de mes activités : </h2>
-    <button class="btn btn-primary btnPreviousHistorique">Précédent</button>
-        {% for activity in activities %}
-            {% if activity.activiteRandonnee is same as null and "now"|date('Y-m-d') > activity.dateActivite|date('Y-m-d') %}
-            <div class="col-4 my-2 inactiveHistorique">
-                <div class="card cardBackground h-100">
-                    <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Activite">
-                    <div class="p-3 card-body">
-                        <small class="text-muted">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
+    <div class="row col-9 p-3 my-4 containerDashboardColor">
+        <h2 class="mb-2 textDashboardColor">Historique de mes activités : </h2>
+        <div class="d-flex justify-content-around align-items-center ContainerHistorique">
+            <div class="btnPreviousHistorique col-1 text-center d-flex align-items-center justify-content-center btnColor "><svg class='arrowColor arrowPreviousHistorique ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">-<path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></div>
+                {% for activity in activities %}
+                    {% if activity.activiteRandonnee is same as null and "now"|date('Y-m-d') > activity.dateActivite|date('Y-m-d')  %}
+                    <div class="col-3 my-2 mx-5 inactiveHistorique">
+                        <div class="card cardBackground h-100 ContainerCard">
+                            <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Activite">
+                            <div class="p-3 card-body h-100">
+                                <small class="text-muted">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
+                            </div>
+                            <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
+                        </div>
                     </div>
-                    <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
-                </div>
-            </div>
-            {% endif %}
-        {% endfor %}
-        <button class="btn btn-primary btnNextHistorique">Suivant</button>
+                    {% endif %}
+                {% endfor %}
+            <div class="btnNextHistorique col-1 text-center d-flex align-items-center justify-content-center btnColor "><svg class='arrowColor arrowNextHistorique ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg></div>    
+        </div>
     </div>
 
 {% endblock %}

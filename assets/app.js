@@ -18,14 +18,33 @@ bsCustomFileInput.init();
 let cardWrapperActivite = document.querySelectorAll(".inactiveActivite");
 let btnPreviousActivite = document.querySelector(".btnPreviousActivite");
 let btnNextActivite = document.querySelector(".btnNextActivite");
+let ContainerActivite = document.querySelector(".ContainerActivite");
+let arrowPreviousActivite = document.querySelector(".arrowPreviousActivite");
+let arrowNextActivite = document.querySelector(".arrowNextActivite");
 
 function sliderActivite() {
   let count = 0;
+
+  btnPreviousActivite.classList.add("arrowActiviteInactive");
+  btnNextActivite.classList.add("arrowActiviteInactive");
+  arrowPreviousActivite.classList.add("arrowActiviteInactive");
+  arrowNextActivite.classList.add("arrowActiviteInactive");
+  ContainerActivite.classList.remove("justify-content-around");
+  ContainerActivite.classList.remove("justify-content-around");
 
   for (let i = count; i < 3; i++) {
     let active = cardWrapperActivite[i];
     active.classList.remove("inactiveActivite");
     count = i;
+  }
+
+  if (cardWrapperActivite.length > 3) {
+    btnPreviousActivite.classList.remove("arrowActiviteInactive");
+    btnNextActivite.classList.remove("arrowActiviteInactive");
+    arrowPreviousActivite.classList.remove("arrowActiviteInactive");
+    arrowNextActivite.classList.remove("arrowActiviteInactive");
+    ContainerActivite.classList.add("justify-content-around");
+    ContainerActivite.classList.add("justify-content-around");
   }
 
   btnNextActivite.addEventListener("click", nextSlides);
@@ -55,14 +74,35 @@ sliderActivite();
 let cardWrapperInscription = document.querySelectorAll(".inactiveInscription");
 let btnPreviousInscription = document.querySelector(".btnPreviousInscription");
 let btnNextInscription = document.querySelector(".btnNextInscription");
+let ContainerInscription = document.querySelector(".ContainerInscription");
+let arrowPreviousInscription = document.querySelector(
+  ".arrowPreviousInscription"
+);
+let arrowNextInscription = document.querySelector(".arrowNextInscription");
 
 function sliderInscription() {
   let count = 0;
+
+  btnPreviousInscription.classList.add("arrowInscriptionInactive");
+  btnNextInscription.classList.add("arrowInscriptionInactive");
+  arrowPreviousInscription.classList.add("arrowInscriptionInactive");
+  arrowNextInscription.classList.add("arrowInscriptionInactive");
+  ContainerInscription.classList.remove("justify-content-around");
+  ContainerInscription.classList.remove("justify-content-around");
 
   for (let i = count; i < 3; i++) {
     let active = cardWrapperInscription[i];
     active.classList.remove("inactiveInscription");
     count = i;
+  }
+
+  if (cardWrapperInscription.length > 3) {
+    btnPreviousInscription.classList.remove("arrowInscriptionInactive");
+    btnNextInscription.classList.remove("arrowInscriptionInactive");
+    arrowPreviousInscription.classList.remove("arrowInscriptionInactive");
+    arrowNextInscription.classList.remove("arrowInscriptionInactive");
+    ContainerInscription.classList.add("justify-content-around");
+    ContainerInscription.classList.add("justify-content-around");
   }
 
   btnNextInscription.addEventListener("click", nextSlides);
@@ -88,18 +128,39 @@ function sliderInscription() {
 
 sliderInscription();
 
-// Carrousssel Dashboard Inscription
+// Carrousssel Dashboard Historique
 let cardWrapperHistorique = document.querySelectorAll(".inactiveHistorique");
 let btnPreviousHistorique = document.querySelector(".btnPreviousHistorique");
 let btnNextHistorique = document.querySelector(".btnNextHistorique");
+let ContainerHistorique = document.querySelector(".ContainerHistorique");
+let arrowPreviousHistorique = document.querySelector(
+  ".arrowPreviousHistorique"
+);
+let arrowNextHistorique = document.querySelector(".arrowNextHistorique");
 
 function sliderHistorique() {
   let count = 0;
+
+  btnPreviousHistorique.classList.add("arrowHistoriqueInactive");
+  btnNextHistorique.classList.add("arrowHistoriqueInactive");
+  arrowPreviousHistorique.classList.add("arrowHistoriqueInactive");
+  arrowNextHistorique.classList.add("arrowHistoriqueInactive");
+  ContainerHistorique.classList.remove("justify-content-around");
+  ContainerHistorique.classList.remove("justify-content-around");
 
   for (let i = count; i < 3; i++) {
     let active = cardWrapperHistorique[i];
     active.classList.remove("inactiveHistorique");
     count = i;
+  }
+
+  if (cardWrapperHistorique.length > 3) {
+    btnPreviousHistorique.classList.remove("arrowHistoriqueInactive");
+    btnNextHistorique.classList.remove("arrowHistoriqueInactive");
+    arrowPreviousHistorique.classList.remove("arrowHistoriqueInactive");
+    arrowNextHistorique.classList.remove("arrowHistoriqueInactive");
+    ContainerHistorique.classList.add("justify-content-around");
+    ContainerHistorique.classList.add("justify-content-around");
   }
 
   btnNextHistorique.addEventListener("click", nextSlides);

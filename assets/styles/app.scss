@@ -19,7 +19,7 @@ h1 {
 }
 
 h2 {
-  font-size: 26px;
+  font-size: 32px;
   color: #3e6765;
   margin-bottom: 2rem;
 }
@@ -126,12 +126,17 @@ header {
   align-items: center;
 }
 
+.titleHomepage {
+  text-align: center;
+  margin-top: 50px;
+}
+
 .fonction {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 150px;
+  margin-top: 100px;
   flex-wrap: wrap;
 
   &__card {
@@ -183,7 +188,7 @@ header {
 }
 
 .titleWidthDashboardColor {
-  width: 67%;
+  width: 75%;
 }
 
 .cardBackground {
@@ -206,6 +211,40 @@ header {
 
 .inactiveHistorique {
   display: none;
+}
+
+.btnColor {
+  background-color: $thirdColor;
+  width: 50px;
+  height: 50px;
+  border-radius: 70px;
+}
+
+.arrowColor {
+  fill: white;
+  width: 40%;
+}
+
+.arrowHistoriqueInactive {
+  display: none;
+  position: absolute;
+  right: 999999px;
+}
+
+.arrowHistoriqueInscription {
+  display: none;
+  position: absolute;
+  right: 999999px;
+}
+
+.arrowHistoriqueActivite {
+  display: none;
+  position: absolute;
+  right: 999999px;
+}
+
+.ContainerCard {
+  min-height: 444px;
 }
 
 .function__card__number {
