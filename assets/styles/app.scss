@@ -31,18 +31,26 @@ nav {
   justify-content: space-between;
 }
 
-.nav__logo img {
-  width: 7%;
+.nav__logo {
+  flex: 1 1 auto;
+
+  img {
+    height: 75px;
+  }
 }
 
+
+
+
 .nav__links {
-  width: 35%;
+  width: 80%;
   height: 80px;
+  flex: 2 1 auto;
 
   ul {
     height: 80px;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     list-style: none;
 
     li {
@@ -102,6 +110,7 @@ footer {
 
 main {
   width: 60%;
+
 }
 
 header {
@@ -120,7 +129,9 @@ header {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 150px;
+  flex-wrap: wrap;
 
   &__card {
     width: 300px;
@@ -130,9 +141,12 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    flex-wrap: wrap;
+    margin: 25px 25px;
+    padding: 15px;
 
     &__content {
-      width: 280px;
+      width: 100%;
       height: 200px;
       background-color: #3e6765;
       color: #fff;
@@ -141,6 +155,21 @@ header {
       border-radius: 15px;
     }
   }
+
+}
+
+.function__card__number {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  border-radius: 50%;
+  background-color: #eaeaea;
+  color: $thirdColor;
+  position: relative;
+  top: -20%;
 }
 
 // Eléments pour page Dashboard
@@ -161,19 +190,7 @@ header {
   background-color: #f7f7f7;
 }
 
-.function__card__number {
-  width: 80px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5em;
-  border-radius: 50%;
-  background-color: #eaeaea;
-  color: #3e6765;
-  position: relative;
-  top: -20%;
-}
+
 
 .presentation {
   width: 100%;
