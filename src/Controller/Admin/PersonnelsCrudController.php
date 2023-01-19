@@ -26,7 +26,7 @@ class PersonnelsCrudController extends AbstractCrudController
     {
         return [
             EmailField::new('email', 'Email'),
-            TextField::new('password', 'Mot de passe')->hideOnIndex()->hideWhenUpdating(),
+            TextField::new('plainPassword', 'Mot de passe')->hideOnIndex()->hideWhenUpdating(),
             TextField::new('nom', 'Nom'),
             TextField::new('prenom', 'Prénom'),
             ChoiceField::new('roles', 'Roles')

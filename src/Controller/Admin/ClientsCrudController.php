@@ -24,7 +24,7 @@ class ClientsCrudController extends AbstractCrudController
     {
 
         yield EmailField::new('email');
-        yield TextField::new('plainPassword')->hideOnIndex()->hideWhenUpdating();
+        yield TextField::new('plainPassword', 'Mot de passe')->hideOnIndex()->hideWhenUpdating();
         yield TextField::new('nomClient', 'Nom');
         yield TextField::new('prenomClient', 'Prenom');
         yield TextField::new('telephoneClient', 'Téléphone');

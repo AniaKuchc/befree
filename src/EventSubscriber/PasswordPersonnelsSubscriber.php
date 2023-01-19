@@ -2,16 +2,14 @@
 
 namespace App\EventSubscriber;
 
-use App\Entity\Clients;
+use App\Entity\Personnels;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-
-class PasswordClientSubscriber implements EventSubscriberInterface
+class PasswordPersonnelsSubscriber implements EventSubscriberInterface
 {
-
     public function __construct(protected UserPasswordHasherInterface $passwordHasher)
     {
     }
@@ -19,16 +17,16 @@ class PasswordClientSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            BeforeEntityPersistedEvent::class => 'onBeforeEntityPersistedClient',
-            BeforeEntityUpdatedEvent::class => 'onBeforeEntityPersistedClient',
+            BeforeEntityPersistedEvent::class => 'onBeforeEntityPersistedPersonels',
+            BeforeEntityUpdatedEvent::class => 'onBeforeEntityPersistedPersonels',
         ];
     }
 
-    public function onBeforeEntityPersistedClient(BeforeEntityUpdatedEvent|BeforeEntityPersistedEvent $event): void
+    public function onBeforeEntityPersistedPersonels(BeforeEntityUpdatedEvent|BeforeEntityPersistedEvent $event): void
     {
         $entity = $event->getEntityInstance();
 
-        if (!$entity instanceof Clients) {
+        if (!$entity instanceof Personnels) {
             return;
         }
 
