@@ -8,10 +8,17 @@
 <main>
 <div class='ficheActivite__title d-flex justify-content-between mt-5 mb-3'>
     <h1>{{activite.nomActivite}}</h1>
-    <a href='{{ path('app_inscription_activite', { id: activite.id }) }}' class='btn btn-warning'>Je m'inscris</a>
-</div>
-
-    {{ dump(activite) }}
+    {% if isRegister == null %}    
+        {% if placesRestantes > 0 %}
+            <a href='{{ path('app_inscription_activite', { id: activite.id }) }}' class='btn btn-warning'>Je m'inscris</a>
+        {% else %}
+            <p>Il ne reste plus de place disponible pour cette activité</p>
+        {% endif %}
+    {% else %}
+        <p>Vous etes déjà inscris à cette activité!</p>
+        <a href='{{ path('app_desinscription_activite', { id: activite.id }) }}' class='btn btn-danger'>Me désinscrire</a>
+    {% endif %}
+</div>  
 
     <section class='ficheActivite'>
 
@@ -24,7 +31,7 @@
         <p>{{activite.descriptionActivite}}</p>
 
     </section>
-    {{ dump(client) }}
+    
 
 </main>
 {% endblock %}

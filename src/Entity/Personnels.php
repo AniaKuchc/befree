@@ -43,6 +43,12 @@ class Personnels implements UserInterface, PasswordAuthenticatedUserInterface
         $this->activites = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->nom . ' ' . $this->prenom;
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;

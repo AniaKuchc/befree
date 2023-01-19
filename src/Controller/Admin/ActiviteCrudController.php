@@ -41,6 +41,9 @@ class ActiviteCrudController extends AbstractCrudController
             DateTimeField::new('dateActivite', 'date'),
             NumberField::new('placeMaximum', 'Place maximum'),
             BooleanField::new('afficherActivite', 'Afficher ?'),
+            AssociationField::new('personnels', 'Affecter un accompagnateur')->setFormTypeOptions([
+                'by_reference' => false,
+            ]),
             AssociationField::new('activiteAdresse', 'Adresse de l\'activite')->setFormTypeOption('required', false),
             AssociationField::new('activiteOffre', 'Offre dont dépend l\'activite'),
         ];
