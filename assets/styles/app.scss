@@ -20,7 +20,9 @@ h1 {
 }
 
 h2 {
-  font-size: 32px;
+  font-size: 26px;
+  color: #3e6765;
+  margin-bottom: 2rem;
 }
 
 nav {
@@ -66,6 +68,10 @@ nav {
       padding: 10px;
     }
   }
+}
+
+.link_inscription {
+  color: #e07e59;
 }
 
 footer {
@@ -270,6 +276,158 @@ header {
   width: 100%;
   margin-top: 100px;
 }
+
+//Inscription form
+.flex-container {
+  margin-top: 4em;
+  max-width: 65%;
+}
+
+.inscription-form {
+  background-color: #d9e2d5;
+  display: flex;
+  justify-content: center;
+  padding: 5em 8em;
+  width: 100%;
+}
+
+.col-form-label, .form-label {
+  font-size: 16px;
+  color: #3e6765;
+  width: 18em;
+}
+
+.col-sm-10 {
+  max-width: 15em;
+}
+
+.inscription-form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.inscription-form-row-nr {
+  max-width: 8em;
+}
+
+.button {
+  margin-top: 2em;
+  color: #3e6765;
+  background-color: #e07e59;
+  width: 10em;
+  border-radius: 8px;
+  border: none;
+  padding: 0.5em;
+  font-size: 0.8em;
+  justify-content: center;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #e07e59;
+  font-weight: bold;
+  color: #3e6765;
+}
+
+label.required:before {
+  content: "*";
+}
+
+//Connexion form
+.link_inscription:hover {
+  color: #e07e59;
+  font-weight: bold;
+}
+
+.privacy-policy {
+  display: flex;
+  text-align: center;
+  font-size: 0.6em;
+  color: #3e6765;
+}
+
+.inscripton {
+  display: flex;
+  flex-direction: row;
+}
+
+
+//Inscription form
+.flex-container {
+  margin-top: 4em;
+  max-width: 65%;
+}
+
+.inscription-form {
+  background-color: #d9e2d5;
+  display: flex;
+  justify-content: center;
+  padding: 5em 8em;
+  width: 100%;
+}
+
+.col-form-label, .form-label {
+  font-size: 16px;
+  color: #3e6765;
+  width: 18em;
+}
+
+.col-sm-10 {
+  max-width: 15em;
+}
+
+.inscription-form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.inscription-form-row-nr {
+  max-width: 8em;
+}
+
+.button {
+  margin-top: 2em;
+  color: #3e6765;
+  background-color: #e07e59;
+  width: 10em;
+  border-radius: 8px;
+  border: none;
+  padding: 0.5em;
+  font-size: 0.8em;
+  justify-content: center;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #e07e59;
+  font-weight: bold;
+  color: #3e6765;
+}
+
+label.required:before {
+  content: "*";
+}
+
+//Connexion form
+.link_inscription:hover {
+  color: #e07e59;
+  font-weight: bold;
+}
+
+.privacy-policy {
+  display: flex;
+  text-align: center;
+  font-size: 0.6em;
+  color: #3e6765;
+}
+
+.inscripton {
+  display: flex;
+  flex-direction: row;
+}
+
 
 .ficheActivite {
   width: 100%;
