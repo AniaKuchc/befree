@@ -1,14 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Modification de l'utilisateur{% endblock %}
 
 {% block body %}
-{{ dump(user) }}
 
-<ul>
-    <li>{{user.prenom}} {{user.nom}} </li>
-    <li>Email: {{user.email}}</li>
-    
-</ul>
+    <div class="container">
+        <h1 class="mt-4">Formulaire de modification des informations personelles</h1>
+        <div class="inscription-form">
+        {{ form_start(form_adresse_inscription) }}
+            {% for client in form_adresse_inscription.clients %}
+            <div class="inscription-form-row">
+                {{ form_row(client.prenomClient) }}
+                {{ form_row(client.nomClient) }}
+            </div>
+            <div class="inscription-form-row">
+                {{ form_row(client.email) }}
+                {{ form_row(client.telephoneClient) }}
+            </div>
+            {% endfor %}
+            <div class="inscription-form-row">
+                <div class="inscription-form-row-nr">
+                    {{ form_row(form_adresse_inscription.numeroAdresse) }}
+                </div>
+                    {{ form_row(form_adresse_inscription.rueAdresse) }}
+            </div>
+            <div class="inscription-form-row">
+                <div class="inscription-form-row-nr">
+                    {{ form_row(form_adresse_inscription.codePostalAdresse) }}
+                </div>
+                <div class="inscription-form-row-address">
+                    {{ form_row(form_adresse_inscription.villeAdresse) }}
+                </div>
+            </div>
+            <div class="inscription-form-row">
+                {% for client in form_adresse_inscription.clients %}
+                    {{ form_row(client.password) }}
+                {% endfor %}
+            </div>
+        {{ form_end(form_adresse_inscription) }}
+    </div>
 
 {% endblock %}
