@@ -15,8 +15,8 @@
         {{ form_start(form_adresse_inscription) }}
             {% for client in form_adresse_inscription.clients %}
             <div class="inscription-form-row">
-                {{ form_row(client.nomClient) }}
                 {{ form_row(client.prenomClient) }}
+                {{ form_row(client.nomClient) }}
             </div>
             <div class="inscription-form-row">
                 {{ form_row(client.email) }}

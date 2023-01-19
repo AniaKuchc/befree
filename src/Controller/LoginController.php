@@ -64,12 +64,12 @@ class LoginController extends AbstractController
                 $clients->setPassword(
                     $this->userPasswordHasherInterface->hashPassword(
                         $clients,
-                        "password"
+                        $clients->getPassword()
                     )
                 );
                 $clients->setAdresse($adresse);
                 $adresseRepository->save($adresse, true);
-                return $this->redirectToRoute('app_dashboard');
+                return $this->redirectToRoute('successInscription');
             } else {
                 $message = 'La saisie n\'est pas valide';
             }
@@ -78,6 +78,20 @@ class LoginController extends AbstractController
         return $this->render('login/adresse_inscription.html.twig', [
             'form_adresse_inscription' => $form,
             'message' => $message,
+        ]);
+    }
+
+    #[Route('/success', name: 'successInscription')]
+    public function successInscription(AuthenticationUtils $authenticationUtils): Response
+    {
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('login/success_inscription.html.twig', [
+            'last_username' => $lastUsername,
+            'error'         => $error,
         ]);
     }
 }

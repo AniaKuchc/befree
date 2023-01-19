@@ -286,7 +286,7 @@ header {
 .inscription-form-row {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .inscription-form-row-nr {
@@ -294,7 +294,7 @@ header {
 }
 
 .button {
-  margin-top: 2rem;
+  margin-top: 2em;
   color: #3e6765;
   background-color: #e07e59;
   width: 10em;
@@ -302,6 +302,7 @@ header {
   border: none;
   padding: 0.5em;
   font-size: 0.8em;
+  justify-content: center;
 }
 
 .button:hover {
@@ -309,6 +310,10 @@ header {
   background-color: #e07e59;
   font-weight: bold;
   color: #3e6765;
+}
+
+label.required:before {
+  content: "*";
 }
 
 //Connexion form
@@ -328,3 +333,4 @@ header {
   display: flex;
   flex-direction: row;
 }
+

@@ -8,9 +8,11 @@
     {% endif %}
 <div class="flex-container">
     <h2 class="page-title">Formulaire de connexion</h2>
+    <div class="congrats fs-6 text">
+        Félicitations ! Vous venez de créer votre compte. Connectez-vous pour avoir accès à toutes les fonctionnalités.
+    </div>
     <div class="inscription-form">
-        <form action="{{ path('app_login') }}" method="post" class='form-group justify-content-center d-flex flex-column align-items-center'>
-        <div class="d-flex flex-column">
+        <form action="{{ path('app_login') }}" method="post" class='form-group'>
             <label for="username" class="form-label">E-mail:</label>
             <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control">
 
@@ -20,13 +22,12 @@
             {# If you want to control the URL the user is redirected to on success
             <input type="hidden" name="_target_path" value="/account"> #}
 
-        </div>
             <button type="submit" class='button'>Se connecter</button>
         </form>
     </div>
     <div class="inscripton fs-6 text">
-        <p>Première visite sur BeFree ? <a class="link_inscription fs-6 text" href="{{ path('premiereInscription')}}">Inscrivez-vous.</a></p>
-        
+        Première visite sur BeFree ? <br>
+        <a class="link_inscription fs-6 text" href="{{ path('premiereInscription')}}">Inscrivez-vous.</a>
     </div>
 
 
