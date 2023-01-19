@@ -26,6 +26,7 @@ class SouscriptionClientOffre
 
     #[ORM\ManyToOne(inversedBy: 'souscriptionClientOffres')]
     #[ORM\JoinColumn(nullable: false)]
+
     private ?Clients $clients = null;
 
     public function getId(): ?int
@@ -79,5 +80,9 @@ class SouscriptionClientOffre
         $this->clients = $clients;
 
         return $this;
+    }
+    public function __toString()
+    {
+        return 'id' . $this->id;
     }
 }

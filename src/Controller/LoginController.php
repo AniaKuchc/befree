@@ -8,12 +8,16 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\Clients;
 use App\Entity\Adresse;
+use App\Entity\Offre;
+use App\Entity\SouscriptionClientOffre;
 use App\Form\AdresseFormType;
 use App\Form\ClientsUserFormType;
 use App\Repository\AdresseRepository;
 use App\Repository\ClientsRepository;
+use App\Repository\OffreRepository;
 use App\Repository\PrestataireRepository;
 use App\Repository\TypePrestataireRepository;
+use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -49,7 +53,7 @@ class LoginController extends AbstractController
     }
 
     #[Route('/inscription', name: 'premiereInscription')]
-    public function adresseInscription(Request $request, ClientsRepository $clientsRepository, AdresseRepository $adresseRepository): Response
+    public function adresseInscription(Request $request, OffreRepository $offreRepository, ClientsRepository $clientsRepository, AdresseRepository $adresseRepository): Response
     {
         $adresse = new Adresse;
         $clients = new Clients;
@@ -67,6 +71,18 @@ class LoginController extends AbstractController
                         $clients->getPassword()
                     )
                 );
+
+                //Ajout souscription offre
+                $selectedOffre = $form['clients'][0]['selectedOffre']->getData();
+                $souscription = new SouscriptionClientOffre;
+                $dateFin = new DateTime('now');
+                $dateFin->modify('+30 day');
+                $souscription->setDebutSouscription(new DateTime())
+                    ->setFinSouscription($dateFin)
+                    ->setClients($clients)
+                    ->setOffres($offreRepository->find($selectedOffre));
+                $clients->addSouscriptionClientOffre($souscription);
+
                 $clients->setAdresse($adresse);
                 $adresseRepository->save($adresse, true);
                 return $this->redirectToRoute('successInscription');
@@ -75,9 +91,11 @@ class LoginController extends AbstractController
             }
         }
 
+
         return $this->render('login/adresse_inscription.html.twig', [
             'form_adresse_inscription' => $form,
             'message' => $message,
+
         ]);
     }
 
