@@ -188,7 +188,7 @@ header {
 }
 
 .titleWidthDashboardColor {
-  width: 75%;
+  width: 70%;
 }
 
 .cardBackground {
@@ -197,7 +197,7 @@ header {
 
 .card-img-top {
   width: 100%;
-  height: 15vw !important;
+  height: 14vw !important;
   object-fit: cover;
 }
 
@@ -218,6 +218,11 @@ header {
   width: 50px;
   height: 50px;
   border-radius: 70px;
+}
+
+.btnColor:hover {
+  cursor: pointer;
+  background-color: #bb6e52;
 }
 
 .arrowColor {
@@ -498,7 +503,6 @@ label.required:before {
   background-color: $primaryColor;
   padding: 20px;
 }
-
 
 #map {
   height: 400px;

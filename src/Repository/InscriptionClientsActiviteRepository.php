@@ -50,6 +50,21 @@ class InscriptionClientsActiviteRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    /**
+     * Return an array of Client inscription into activite
+     *
+     * @param integer $client
+     * @return array
+     */
+    public function findActivityPerClient(int $clientId): ?array
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.clients = :cli')
+            ->setParameter('cli', $clientId)
+            ->getQuery()
+            ->getResult();
+    }
+
 
     //    /**
     //     * @return InscriptionClientsActivite[] Returns an array of InscriptionClientsActivite objects
