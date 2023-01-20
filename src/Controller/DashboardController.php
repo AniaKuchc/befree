@@ -18,9 +18,10 @@ class DashboardController extends AbstractController
     {
 
         $activiteInscrits = $inscription->findActivityPerClient($user->getId());
+        $activities = $activiteRepository->findActivities();
 
         return $this->render('dashboard/dashboard.html.twig', [
-            'activities' => $activiteRepository->findActivities(),
+            'activities' => $activities,
             'activiteInscrits' => $activiteInscrits,
             'randonnees' => $RandonneeRepository->findInCatalogue()
         ]);
