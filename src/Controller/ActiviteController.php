@@ -23,6 +23,19 @@ class ActiviteController extends AbstractController
     }
 
     /**
+     * Affiche la liste des activités à venir
+     */
+    #[Route('/activite/avenir', name: 'app_activites_futures')]
+    public function ShowFutureActivities(ActiviteRepository $activiteRepo): Response
+    {
+
+        return $this->render('activite/activites_futures.html.twig', [
+            'activites' => $activiteRepo->findAll(),
+
+        ]);
+    }
+
+    /**
      * Affiche la fiche activite
      */
     #[Route('/activite/{id}', name: 'app_fiche_activite')]
