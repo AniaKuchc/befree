@@ -4,13 +4,27 @@
 
 {% block body %}
 {# {{ path('app_profil') }} #}
-<div class="example-wrapper">
-    {# {% if (clients.id) %} #}
-        <h1 class="mt-4">Formulaire de modification des informations personelles</h1>
+<div class="flex-container">
+    <h1 class="mt-4">Bienvenue {{ user.prenomClient }} !</h1>
+    
+        <ul class="list-unstyled">
+            <h4>Votre profil :</h2>
 
-<a href="{{ path("app_update_profil",  {id:user.id}) }}">Modifier</a>
+            <li>{{ user.prenomClient }}</li>
+            <li>{{ user.nomClient }}</li>
+            <li>{{ user.email }}</li>
+            <li>{{ user.telephoneClient }}</li>
+            <li>{{ user.adresse }}</li>
+            {# <li>{{ offre.selectedOffre}}</li> #}
+        </ul>
 
+        <a class="link_inscription fs-6 text" href="{{ path("app_update_profil",  {id:user.id}) }}">Modifier</a>
+        <a class="link_inscription fs-6 text" href="{{ path("app_delete_profil",  {id:user.id}) }}">Supprimer</a>
+
+        
 </div>
+
+
 
 
 {% endblock %}
