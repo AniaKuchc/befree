@@ -7,6 +7,7 @@
 
     <h1 class="mt-5 mb-3 textDashboardColor titleWidthDashboardColor text-start">Mon tableau de bord</h1>
 
+{# Activités à venir auxquelles je suis deja inscris #}
     <div class="row col-8 p-4 my-4 containerDashboardColor">
     <h2 class="mb-2 textDashboardColor">Mes activités à venir : </h2>
     <button class="btn btn-primary btnPreviousActivite">Précédent</button>
@@ -26,20 +27,23 @@
     <button class="btn btn-primary btnNextActivite">Suivant</button>
     </div>
 
+{# Les randonnées que je peux faire #}
     <div class="row col-8 p-4 my-4 containerDashboardColor">
     <h2 class="mb-2 textDashboardColor">Mes randonnées du mois</h2>
-        {% for activity in activities %}
-            {% if activity.activiteRandonnee != null and activity.afficherActivite is same as true %}
+
+    {{ dump(randonnees) }}
+        {% for randonnee in randonnees %}
+            
             <div class="col-4 my-2">
                 <div class="card cardBackground h-100">
-                    <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Activite">
+                    {# <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Activite"> #}
                     <div class="p-3 card-body">
-                        <small class="text-muted">{{ activity.nomActivite }}</small>
+                        <small class="text-muted">{{ randonnee.nomRandonnee }}</small>
                     </div>
-                    <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
+                    <a href='{{ path('app_fiche_randonnee', { id: randonnee.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
                 </div>
             </div>
-            {% endif %}
+           
         {% endfor %}
     </div>
 
