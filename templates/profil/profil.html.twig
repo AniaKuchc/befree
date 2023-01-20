@@ -7,7 +7,9 @@
 <div class="example-wrapper">
     {# {% if (clients.id) %} #}
         <h1 class="mt-4">Formulaire de modification des informations personelles</h1>
-{# {{ dump(user) }} #}
+
+<a href="{{ path("app_update_profil",  {id:user.id}) }}">Modifier</a>
+
 </div>
 
 
