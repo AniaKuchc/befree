@@ -8,15 +8,17 @@
 <main>
 <div class='ficheActivite__title d-flex justify-content-between mt-5 mb-3'>
     <h1>{{activite.nomActivite}}</h1>
-    {% if isRegister == null %}    
-        {% if placesRestantes > 0 %}
-            <a href='{{ path('app_inscription_activite', { id: activite.id }) }}' class='btn btn-warning'>Je m'inscris</a>
+     {% if not is_granted('ROLE_ADMIN') %}
+        {% if isRegister == null %}    
+            {% if placesRestantes > 0 %}
+                <a href='{{ path('app_inscription_activite', { id: activite.id }) }}' class='btn btn-warning'>Je m'inscris</a>
+            {% else %}
+                <p>Il ne reste plus de place disponible pour cette activité</p>
+            {% endif %}
         {% else %}
-            <p>Il ne reste plus de place disponible pour cette activité</p>
+            <p>Vous etes déjà inscris à cette activité!</p>
+            <a href='{{ path('app_desinscription_activite', { id: activite.id }) }}' class='btn btn-danger'>Me désinscrire</a>
         {% endif %}
-    {% else %}
-        <p>Vous etes déjà inscris à cette activité!</p>
-        <a href='{{ path('app_desinscription_activite', { id: activite.id }) }}' class='btn btn-danger'>Me désinscrire</a>
     {% endif %}
 </div>  
 
