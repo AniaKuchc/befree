@@ -52,7 +52,7 @@ class LoginController extends AbstractController
         $this->userPasswordHasherInterface = $userPasswordHasherInterface;
     }
 
-    #[Route('/inscription', name: 'premiereInscription')]
+    #[Route('/inscription', name: 'app_premiere_inscription')]
     public function adresseInscription(Request $request, OffreRepository $offreRepository, ClientsRepository $clientsRepository, AdresseRepository $adresseRepository): Response
     {
         $adresse = new Adresse;
@@ -85,7 +85,7 @@ class LoginController extends AbstractController
 
                 $clients->setAdresse($adresse);
                 $adresseRepository->save($adresse, true);
-                return $this->redirectToRoute('successInscription');
+                return $this->redirectToRoute('app_premiere_inscription');
             } else {
                 $message = 'La saisie n\'est pas valide';
             }

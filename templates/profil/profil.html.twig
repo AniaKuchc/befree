@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Modification de l'utilisateur{% endblock %}
 
 {% block body %}
-{{ dump(user) }}
+{# {{ path('app_profil') }} #}
+<div class="example-wrapper">
+    {# {% if (clients.id) %} #}
+        <h1 class="mt-4">Formulaire de modification des informations personelles</h1>
+{# {{ dump(user) }} #}
+</div>
 
-<ul>
-    <li>{{user.prenomClient}} {{user.nomClient}} </li>
-    <li>Email: {{user.email}}</li>
-    
-</ul>
 
 {% endblock %}
