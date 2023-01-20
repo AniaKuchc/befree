@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Adresse;
 use App\Entity\Clients;
 use App\Entity\SouscriptionClientOffre;
 use App\Form\AdresseFormType;
 use App\Repository\AdresseRepository;
+use App\Repository\ClientsRepository;
 use App\Repository\OffreRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -69,11 +71,18 @@ class ProfilController extends AbstractController
     }
 
     #[Route('/profil', name: 'app_profil')]
-    public function edit(UserInterface $user, AdresseRepository $adresseRepository): Response
+    public function show(UserInterface $user): Response
     {
 
         return $this->render('profil/profil.html.twig', [
             'user' => $user,
         ]);
+    }
+
+    #[Route('/delete/profil/{id}', name: 'app_delete_profil')]
+    public function deleteProfil(UserInterface $user, ClientsRepository $clientsRepository): Response
+    {
+        $clientsRepository->remove($user, true);
+        return $this->redirectToRoute('app_default');
     }
 }
