@@ -80,9 +80,11 @@ class ProfilController extends AbstractController
     }
 
     #[Route('/delete/profil/{id}', name: 'app_delete_profil')]
-    public function deleteProfil(UserInterface $user, ClientsRepository $clientsRepository): Response
+    public function deleteProfil(UserInterface $user, ClientsRepository $clientsRepository, Request $request): Response
     {
         $clientsRepository->remove($user, true);
-        return $this->redirectToRoute('app_default');
+        $request->getSession()->invalidate();
+        $this->container->get('security.token_storage')->setToken(null);
+        return $this->redirectToRoute('app_login');
     }
 }
