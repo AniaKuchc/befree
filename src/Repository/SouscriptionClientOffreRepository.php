@@ -39,28 +39,29 @@ class SouscriptionClientOffreRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return SouscriptionClientOffre[] Returns an array of SouscriptionClientOffre objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * Return offer for one client
+     *
+     * @param integer $activiteId
+     * @param integer $clientId
+     * @return SouscriptionClientOffre|null
+     */
+    public function findOfferForOneClient(int $client): ?SouscriptionClientOffre
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.clients = :cli')
+            ->setParameter('cli', $client)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 
-//    public function findOneBySomeField($value): ?SouscriptionClientOffre
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?SouscriptionClientOffre
+    //    {
+    //        return $this->createQueryBuilder('s')
+    //            ->andWhere('s.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }
