@@ -44,6 +44,7 @@ class ActiviteController extends AbstractController
 
         return $this->render('activite/fiche_activite.html.twig', [
             'activite' => $activite,
+
             'client' => $user,
             'isRegister' => $inscription->findOneById($activite->getId(), $user->getId()),
             'placesRestantes' => $activite->getPlaceMaximum()
