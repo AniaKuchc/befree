@@ -9,8 +9,8 @@
 
 
 {# {{ dump(nextActivitesInscriptions) }} #}
+<h1 class="mb-2 textDashboardColor mt-5 mb-3">Les prochaines inscriptions: </h1>
  <div class=" p-3 my-4 containerDashboardColor container">
-    <h2 class="mb-2 textDashboardColor">Les prochaines inscriptions: </h2>
     <div class=" row container justify-content-between align-items-center ContainerInscription ms-1">
 
     {% for activity in activities %}
@@ -23,10 +23,10 @@
                             <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Inscription">                        </div>
                         <div class="col-md-8">
                         <div class="card-body">
-                            <h3 class="card-title">{{ activity.nomActivite}}</h3>
-                            <small>{{' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
-                            <p class="card-text">{{activity.descriptionActivite|raw}}</p>
-                            <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
+                            <h3 class="card-title cardText">{{ activity.nomActivite}}</h3>
+                            <small class='cardText'>{{' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
+                            <p class="card-text cardText">{{activity.descriptionActivite|striptags}}</p>
+                            <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none cardLink">Voir plus</a>
 
                         </div>
                         </div>
