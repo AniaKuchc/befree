@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: PersonnelsRepository::class)]
 class Personnels implements UserInterface, PasswordAuthenticatedUserInterface
@@ -30,7 +30,6 @@ class Personnels implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[Assert\NotBlank]
     private ?string $plainPassword = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -117,7 +116,7 @@ class Personnels implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPlainPassword(): string
+    public function getPlainPassword(): string|null
     {
         return $this->plainPassword;
     }
