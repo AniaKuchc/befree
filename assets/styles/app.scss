@@ -197,7 +197,26 @@ header {
 }
 
 .cardBackground {
-  background-color: #f7f7f7;
+  background-color: $secondaryColor;
+  border: none;
+}
+
+.cardText {
+  color: white;
+}
+
+.cardLink {
+  color: $thirdColor;
+  text-decoration: none;
+  transition: 0.6s;
+}
+
+.cardLink:hover {
+  color: white;
+}
+
+.allInscriptionLink {
+  text-decoration: none;
 }
 
 .card-img-top {
@@ -223,11 +242,12 @@ header {
   width: 50px;
   height: 50px;
   border-radius: 70px;
+  transition: 0.6s;
 }
 
 .btnColor:hover {
   cursor: pointer;
-  background-color: #bb6e52;
+  opacity: 0.8;
 }
 
 .arrowColor {
@@ -237,6 +257,21 @@ header {
 
 .ContainerCard {
   min-height: 444px;
+}
+
+.btnRetourActivite {
+  background-color: $thirdColor;
+  transition: 0.6s;
+}
+
+.btnRetourActivite:hover {
+  opacity: 0.8;
+  background-color: $thirdColor;
+}
+
+.btnRetourActivite a {
+  color: $secondaryColor;
+  text-decoration: none;
 }
 
 .function__card__number {
