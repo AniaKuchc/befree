@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Adresse;
 use App\Entity\Clients;
-use App\Entity\Offre;
 use App\Entity\SouscriptionClientOffre;
 use App\Form\AdresseFormType;
 use App\Repository\AdresseRepository;
@@ -74,7 +72,7 @@ class ProfilController extends AbstractController
     #[Route('/profil', name: 'app_profil')]
     public function show(UserInterface $user, SouscriptionClientOffreRepository $souscription): Response
     {
-        $offerSubscribed = $souscription->findOfferForOneClient($user->getId());
+        $offerSubscribed = $souscription->findLastOfferForOneClient($user->getId());
         return $this->render('profil/profil.html.twig', [
             'user' => $user,
             'offerSubscribed' => $offerSubscribed,
@@ -82,7 +80,7 @@ class ProfilController extends AbstractController
     }
 
     #[Route('/delete/profil/{id}', name: 'app_delete_profil')]
-    public function deleteProfil(UserInterface $user, ClientsRepository $clientsRepository, AdresseRepository $adresseRepository, Request $request): Response
+    public function deleteProfil(UserInterface $user, ClientsRepository $clientsRepository, Request $request): Response
     {
         $clientsRepository->remove($user, true);
         $request->getSession()->invalidate();

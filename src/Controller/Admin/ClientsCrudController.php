@@ -24,12 +24,12 @@ class ClientsCrudController extends AbstractCrudController
     {
 
         yield EmailField::new('email');
-        yield TextField::new('plainPassword', 'Mot de passe')->hideOnIndex()->hideWhenUpdating();
+        yield TextField::new('plainPassword', 'Mot de passe')->hideOnIndex()->hideWhenUpdating()->setFormTypeOption('required', false);
         yield TextField::new('nomClient', 'Nom');
         yield TextField::new('prenomClient', 'Prenom');
         yield TextField::new('telephoneClient', 'Téléphone');
         yield ArrayField::new('roles', 'Roles')->setFormTypeOption('disabled', true);
-        yield AssociationField::new('adresse', 'Adresse');
+        yield AssociationField::new('adresse', 'Adresse')->renderAsEmbeddedForm();
     }
 
     public function configureCrud(Crud $crud): Crud

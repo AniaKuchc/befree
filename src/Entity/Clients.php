@@ -31,7 +31,6 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[Assert\NotBlank]
     private ?string $plainPassword = null;
 
     #[ORM\Column(length: 255)]
@@ -49,7 +48,7 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'clients', targetEntity: SouscriptionClientOffre::class, orphanRemoval: true, cascade: ["persist"])]
     private Collection $souscriptionClientOffres;
 
-    #[ORM\ManyToOne(inversedBy: 'clients')]
+    #[ORM\ManyToOne(inversedBy: 'clients', cascade: ["persist"])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Adresse $adresse = null;
     // private Collection $adresse;
@@ -125,7 +124,7 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPlainPassword(): string
+    public function getPlainPassword(): string|null
     {
         return $this->plainPassword;
     }

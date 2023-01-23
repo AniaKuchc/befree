@@ -39,7 +39,7 @@ class ClientsUserFormType extends AbstractType
             ])
 
             ->add('enregistrer', SubmitType::class, [
-                'attr' => ['class' => 'button'],
+                'attr' => ['class' => 'btnRetourActivite'],
             ]);
     }
 
