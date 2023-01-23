@@ -26,22 +26,20 @@
         </div>
     </div>
 
-
-    <div class="row container p-4 my-4 containerDashboardColor">
-    <h2 class="mb-2 textDashboardColor">Mes randonnées du mois</h2>
-
-        {% for randonnee in randonnees %}
-            
-            <div class="col-4 my-2">
-                <div class="card cardBackground h-100">
-                    <div class="p-3 card-body">
-                        <small class="cardText">{{ randonnee.nomRandonnee }}</small>
+    <div class=" p-3 my-4 containerDashboardColor container">
+        <h2 class="mb-2 textDashboardColor">Mes randonnées du mois</h2>
+        <div class="row container p-4 my-4 containerDashboardColor">
+            {% for randonnee in randonnees %}                
+                <div class="col-4 my-2">
+                    <div class="card cardBackground h-100">
+                        <div class="p-3 card-body">
+                            <small class="cardText">{{ randonnee.nomRandonnee }}</small>
+                        </div>
+                        <a href='{{ path('app_fiche_randonnee', { id: randonnee.id }) }}' class="text-center mb-3 cardLink">Voir plus</a>
                     </div>
-                    <a href='{{ path('app_fiche_randonnee', { id: randonnee.id }) }}' class="text-center mb-3 cardLink">Voir plus</a>
-                </div>
-            </div>
-           
-        {% endfor %}
+                </div>                
+            {% endfor %}
+        </div>
     </div>
     
     <div class=" p-3 my-4 containerDashboardColor container">

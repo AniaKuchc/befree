@@ -55,6 +55,8 @@ class ActiviteRepository extends ServiceEntityRepository
 
 
 
+
+
     //    public function findOneBySomeField($value): ?Activite
     //    {
     //        return $this->createQueryBuilder('a')
