@@ -6,24 +6,31 @@
 {# {{ path('app_profil') }} #}
 <div class="flex-container">
     <h1 class="mt-4">Bienvenue {{ user.prenomClient }} !</h1>
-    
+    <div class="inscription-form col">
         <ul class="list-unstyled">
             <h4>Votre profil :</h2>
-
             <li>Prénom : {{ user.prenomClient }}</li>
             <li>Nom :{{ user.nomClient }}</li>
             <li>Email : {{ user.email }}</li>
             <li>Téléphone :{{ user.telephoneClient }}</li>
-            <li>Adresse : {{ user.adresse }}</li>
-            {# <li>{{ offre.selectedOffre}}</li> #}
+            <li>Numero Adresse : {{ user.adresse.numeroAdresse }}</li>
+            <li>Rue : {{ user.adresse.rueAdresse }}</li>
+            <li>Code postal : {{ user.adresse.codePostalAdresse }}</li>
+            <li>Ville : {{ user.adresse.villeAdresse }}</li>
+            <li>Offre : {{ offerSubscribed.offres.nomOffre }}</li>
+            <a class="button" href="{{ path("app_update_profil",  {id:user.id}) }}">Modifier</a>
+            <a class="button" onclick="confirmDelete()">Supprimer</a>
         </ul>
-
-        <a class="link_inscription fs-6 text" href="{{ path("app_update_profil",  {id:user.id}) }}">Modifier</a>
-        <a class="link_inscription fs-6 text" href="{{ path("app_delete_profil",  {id:user.id}) }}">Supprimer</a>
-
-        
+    </div>  
 </div>
 
+<script>
+        function confirmDelete() {
+        if (confirm("Confirmez-vous la suppression de votre compte ?")) {
+            window.location = "{{ path ('app_delete_profil', { id:user.id }) }}";
+        }
+    }
+</script>
 
 
 

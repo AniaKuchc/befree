@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Adresse;
 use App\Entity\Clients;
+use App\Entity\Offre;
 use App\Entity\SouscriptionClientOffre;
 use App\Form\AdresseFormType;
 use App\Repository\AdresseRepository;
 use App\Repository\ClientsRepository;
 use App\Repository\OffreRepository;
+use App\Repository\SouscriptionClientOffreRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -66,21 +68,21 @@ class ProfilController extends AbstractController
             'form_adresse_inscription' => $form,
             'message' => $message,
             'adresse' => $adresse,
-
         ]);
     }
 
     #[Route('/profil', name: 'app_profil')]
-    public function show(UserInterface $user): Response
+    public function show(UserInterface $user, SouscriptionClientOffreRepository $souscription): Response
     {
-
+        $offerSubscribed = $souscription->findOfferForOneClient($user->getId());
         return $this->render('profil/profil.html.twig', [
             'user' => $user,
+            'offerSubscribed' => $offerSubscribed,
         ]);
     }
 
     #[Route('/delete/profil/{id}', name: 'app_delete_profil')]
-    public function deleteProfil(UserInterface $user, ClientsRepository $clientsRepository, Request $request): Response
+    public function deleteProfil(UserInterface $user, ClientsRepository $clientsRepository, AdresseRepository $adresseRepository, Request $request): Response
     {
         $clientsRepository->remove($user, true);
         $request->getSession()->invalidate();

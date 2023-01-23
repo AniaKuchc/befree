@@ -99,17 +99,17 @@ class LoginController extends AbstractController
         ]);
     }
 
-    #[Route('/success', name: 'successInscription')]
-    public function successInscription(AuthenticationUtils $authenticationUtils): Response
-    {
-        $error = $authenticationUtils->getLastAuthenticationError();
+    // #[Route('/success', name: 'successInscription')]
+    // public function successInscription(AuthenticationUtils $authenticationUtils): Response
+    // {
+    //     $error = $authenticationUtils->getLastAuthenticationError();
 
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
+    //     // last username entered by the user
+    //     $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('login/success_inscription.html.twig', [
-            'last_username' => $lastUsername,
-            'error'         => $error,
-        ]);
-    }
+    //     return $this->render('login/success_inscription.html.twig', [
+    //         'last_username' => $lastUsername,
+    //         'error'         => $error,
+    //     ]);
+    // }
 }

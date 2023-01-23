@@ -3,10 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Clients;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -14,7 +12,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Collection as ConstraintsCollection;
 
 class ClientsUserFormType extends AbstractType
 {
@@ -25,7 +22,6 @@ class ClientsUserFormType extends AbstractType
             ->add('nomClient', TextType::class, ['label' => 'Nom'])
             ->add('email', EmailType::class, ['label' => 'E-mail'])
             ->add('telephoneClient', TextType::class, ['label' => 'Téléphone'])
-            // ->add('motDePasseClient', PasswordType::class, ['label' => 'Mot de passe'])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => ['label' => 'Mot de passe'],
@@ -42,7 +38,7 @@ class ClientsUserFormType extends AbstractType
                 ]
             ])
 
-            ->add('inscrire', SubmitType::class, [
+            ->add('enregistrer', SubmitType::class, [
                 'attr' => ['class' => 'button'],
             ]);
     }
