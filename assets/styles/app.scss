@@ -446,6 +446,22 @@ label.required:before {
   font-weight: bold;
 }
 
+#username {
+  margin-bottom: 1em;
+}
+
+#password {
+  margin-bottom: 2em;
+}
+
+//End connexion form
+
+//Inscription form
+.inscripton {
+  display: flex;
+  flex-direction: row;
+}
+
 .privacy-policy {
   display: flex;
   text-align: center;
@@ -458,7 +474,6 @@ label.required:before {
   flex-direction: row;
 }
 
-//Inscription form
 .flex-container {
   margin-top: 4em;
   max-width: 65%;
@@ -493,46 +508,19 @@ label.required:before {
   max-width: 8em;
 }
 
-.button {
-  margin-top: 2em;
-  color: #3e6765;
-  background-color: #e07e59;
-  width: 10em;
-  border-radius: 8px;
-  border: none;
-  padding: 0.5em;
-  font-size: 0.8em;
-  justify-content: center;
-}
-
-.button:hover {
-  cursor: pointer;
-  background-color: #e07e59;
-  font-weight: bold;
-  color: #3e6765;
-}
-
 label.required:before {
   content: "*";
 }
 
-//Connexion form
 .link_inscription:hover {
   color: #e07e59;
   font-weight: bold;
 }
+//End inscription form
 
-.privacy-policy {
-  display: flex;
-  text-align: center;
-  font-size: 0.6em;
-  color: #3e6765;
-}
+//Profil page
 
-.inscripton {
-  display: flex;
-  flex-direction: row;
-}
+//End profil page
 
 .ficheActivite {
   width: 100%;
