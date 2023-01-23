@@ -17,12 +17,10 @@
             <li>Rue : {{ user.adresse.rueAdresse }}</li>
             <li>Code postal : {{ user.adresse.codePostalAdresse }}</li>
             <li>Ville : {{ user.adresse.villeAdresse }}</li>
-            <li>Offre : {{ offerSubscribed.offres.nomOffre }}</li>
-            {# <a class="btn btnRetourActivite" href="{{ path("app_update_profil",  {id:user.id}) }}">Modifier</a> #}
+            <li>Offre : {{ offerSubscribed[0].offres.nomOffre }}</li>
             <button class='btn btnRetourActivite'><a href='{{ path('app_update_profil',  {id:user.id}) }}'> Modifier </a></button>
             <button class='btn btnRetourActivite'><a onclick='confirmDelete()'> Supprimer </a></button>
-            {# <a class="btn btnRetourActivite" onclick="confirmDelete()">Supprimer</a>
-        </ul> #}
+        </ul>
     </div>  
 </div>
 

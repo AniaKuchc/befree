@@ -55,6 +55,16 @@ class SouscriptionClientOffreRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function findLastOfferForOneClient(int $client): ?array
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.clients = :cli')
+            ->setParameter('cli', $client)
+            ->orderBy('i.DebutSouscription', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    public function findOneBySomeField($value): ?SouscriptionClientOffre
     //    {
     //        return $this->createQueryBuilder('s')
