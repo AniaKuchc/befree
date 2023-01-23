@@ -44,7 +44,7 @@ class ActiviteCrudController extends AbstractCrudController
             AssociationField::new('personnels', 'Affecter un accompagnateur')->setFormTypeOptions([
                 'by_reference' => false,
             ]),
-            AssociationField::new('activiteAdresse', 'Adresse de l\'activite')->setFormTypeOption('required', false),
+            AssociationField::new('activiteAdresse', 'Adresse de l\'activite')->setFormTypeOption('required', false)->renderAsEmbeddedForm(),
             AssociationField::new('activiteOffre', 'Offre dont dépend l\'activite'),
         ];
     }

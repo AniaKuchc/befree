@@ -44,7 +44,7 @@ class Activite
     private ?Randonnee $activiteRandonnee = null;
 
 
-    #[ORM\ManyToOne(inversedBy: 'activites')]
+    #[ORM\ManyToOne(inversedBy: 'activites', cascade: ["persist"])]
     private ?Adresse $activiteAdresse = null;
 
     #[ORM\ManyToOne(inversedBy: 'activites')]

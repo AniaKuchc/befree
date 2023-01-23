@@ -127,6 +127,9 @@ header {
   justify-content: center;
   align-items: center;
 }
+.logoBanner {
+  width: 20%;
+}
 
 .titleHomepage {
   text-align: center;
@@ -190,10 +193,6 @@ header {
 
 .textDashboardColor {
   color: #3e6765;
-}
-
-.titleWidthDashboardColor {
-  width: 71%;
 }
 
 .cardBackground {
@@ -554,3 +553,10 @@ label.required:before {
   }
 }
 
+@media screen and (max-width: 992px) {
+  .card-img-top {
+    width: 100%;
+    height: 45vw !important;
+    object-fit: cover;
+  }
+}
