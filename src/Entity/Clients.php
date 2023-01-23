@@ -252,11 +252,6 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->adresse;
     }
 
-    // public function getAdresse(): Collection
-    // {
-    //     return $this->adresse;
-    // }
-
     public function setAdresse(Adresse $adresse): self
     {
         $this->adresse = $adresse;
