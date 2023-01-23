@@ -5,7 +5,7 @@
 {% block body %}
 
 
-<main>
+<main class='container'>
 <div class='ficheActivite__title d-flex justify-content-between mt-5 mb-3'>
     <h1>{{activite.nomActivite}}</h1>
      {% if not is_granted('ROLE_ADMIN') %}

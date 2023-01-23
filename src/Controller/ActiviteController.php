@@ -6,6 +6,7 @@ use App\Entity\Activite;
 use App\Entity\InscriptionClientsActivite;
 use App\Repository\ActiviteRepository;
 use App\Repository\InscriptionClientsActiviteRepository;
+use App\Repository\SouscriptionClientOffreRepository;
 use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,11 +27,28 @@ class ActiviteController extends AbstractController
      * Affiche la liste des activités à venir
      */
     #[Route('/activite/avenir', name: 'app_activites_futures')]
-    public function ShowFutureActivities(ActiviteRepository $activiteRepo): Response
+    public function ShowFutureActivities(SouscriptionClientOffreRepository $souscription, ActiviteRepository $activiteRepository, UserInterface $user, InscriptionClientsActiviteRepository $inscription): Response
     {
 
+        $activiteInscrits = $inscription->findActivityPerClient($user->getId());
+        $activities = $activiteRepository->findActivities();
+        $nextInscriptions = [];
+        $offer = $souscription->findOfferForOneClient($user->getId());
+
+        foreach ($activiteInscrits as $activiteInscrit) {
+            $nextActivites[] = $activiteInscrit->getActivites()->getId();
+        }
+
+        foreach ($activities as $activity) {
+            $nextInscriptions[] = $activity->getId();
+        }
+
+        $nextActivitesInscriptions = array_diff($nextInscriptions, $nextActivites);
+
         return $this->render('activite/activites_futures.html.twig', [
-            'activites' => $activiteRepo->findAll(),
+            'nextActivitesInscriptions' => $nextActivitesInscriptions,
+            'activities' => $activities,
+            'offer' => $offer,
 
         ]);
     }
