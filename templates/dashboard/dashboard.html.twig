@@ -15,9 +15,9 @@
                         <div class="card cardBackground ContainerCard">
                             <img src="../img/activite/{{ activiteInscrit.activites.activiteImage }}" class="card-img-top" alt="Image _Activite">
                             <div class="p-3 card-body">
-                                <small class="text-muted ">{{ activiteInscrit.activites.nomActivite ~ ' le ' ~ activiteInscrit.activites.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
+                                <small class="cardText ">{{ activiteInscrit.activites.nomActivite ~ ' le ' ~ activiteInscrit.activites.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
                             </div>
-                            <a href='{{ path('app_fiche_activite', { id: activiteInscrit.activites.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
+                            <a href='{{ path('app_fiche_activite', { id: activiteInscrit.activites.id }) }}' class="text-center mb-3 cardLink ">Voir plus</a>
                         </div>
                     </div>
                     {% endif %}
@@ -35,9 +35,9 @@
             <div class="col-4 my-2">
                 <div class="card cardBackground h-100">
                     <div class="p-3 card-body">
-                        <small class="text-muted">{{ randonnee.nomRandonnee }}</small>
+                        <small class="cardText">{{ randonnee.nomRandonnee }}</small>
                     </div>
-                    <a href='{{ path('app_fiche_randonnee', { id: randonnee.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
+                    <a href='{{ path('app_fiche_randonnee', { id: randonnee.id }) }}' class="text-center mb-3 cardLink">Voir plus</a>
                 </div>
             </div>
            
@@ -45,26 +45,28 @@
     </div>
     
     <div class=" p-3 my-4 containerDashboardColor container">
-        <h2 class="mb-2 textDashboardColor">Les prochaines inscritpions : </h2>
+        <h2 class="mb-2 textDashboardColor">Les prochaines inscriptions : </h2>
         <div class=" row container justify-content-between align-items-center ContainerInscription ms-1">
             <div class="btnPreviousInscription col-1 text-center d-flex align-items-center justify-content-center btnColor "><svg class='arrowColor arrowPreviousInscription ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">-<path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></div>
-            
+                                      
                 {% for activity in activities %}
                     {% if activity.afficherActivite is same as true and "now"|date('Y-m-d') < activity.dateActivite|date('Y-m-d') and activity.activiteOffre.id is same as offer.offres.id %}
-                    <div class="col-3 my-2 inactiveInscription">
-                        <div class="card cardBackground ContainerCard">
-                            <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Inscription">
-                            <div class="p-3 card-body">
-                                <small class="text-muted ">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
+                    {% if activity.id in nextActivitesInscriptions %}                 
+                        <div class="col-3 my-2 inactiveInscription">
+                            <div class="card cardBackground ContainerCard">
+                                <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Inscription">
+                                <div class="p-3 card-body">
+                                    <small class="cardText ">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
+                                </div>
+                                <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 cardLink">Voir plus</a>
                             </div>
-                            <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
                         </div>
-                    </div>
+                    {% endif %}
                     {% endif %}
                 {% endfor %}
             <div class="btnNextInscription col-1 text-center d-flex align-items-center justify-content-center btnColor "><svg class='arrowColor arrowNextInscription ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg></div>    
+            <a href='{{ path('app_activites_futures')}}' class="text-center my-3 cardLink" >Voir toutes les prochaines inscriptions</a>
         </div>
-        <a href='{{ path('app_activites_futures')}}' >Voir toutes les activités à venir</a>
     </div>
 
     <div class=" p-3 my-4 containerDashboardColor container">
@@ -73,15 +75,17 @@
             <div class="btnPreviousHistorique col-1 text-center d-flex align-items-center justify-content-center btnColor "><svg class='arrowColor arrowPreviousHistorique ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">-<path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></div>
                 {% for activity in activities %}
                     {% if activity.afficherActivite is same as true and "now"|date('Y-m-d') > activity.dateActivite|date('Y-m-d') and activity.activiteOffre.id is same as offer.offres.id %}
+                    {% if activity.id not in nextActivitesInscriptions %}  
                     <div class="col-3 my-2 inactiveHistorique">
                         <div class="card cardBackground ContainerCard">
                             <img src="../img/activite/{{ activity.activiteImage }}" class="card-img-top" alt="Image _Historique">
                             <div class="p-3 card-body">
-                                <small class="text-muted ">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
+                                <small class="cardText ">{{ activity.nomActivite ~ ' le ' ~ activity.dateActivite|format_datetime('long', 'short', locale='fr') }}</small>
                             </div>
-                            <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 text-decoration-none">Voir plus</a>
+                            <a href='{{ path('app_fiche_activite', { id: activity.id }) }}' class="text-center mb-3 cardLink">Voir plus</a>
                         </div>
                     </div>
+                    {% endif %}
                     {% endif %}
                 {% endfor %}
             <div class="btnNextHistorique col-1 text-center d-flex align-items-center justify-content-center btnColor "><svg class='arrowColor arrowNextHistorique ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg></div>    

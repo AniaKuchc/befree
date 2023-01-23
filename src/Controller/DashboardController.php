@@ -21,12 +21,24 @@ class DashboardController extends AbstractController
         $activiteInscrits = $inscription->findActivityPerClient($user->getId());
         $activities = $activiteRepository->findActivities();
         $offer = $souscription->findOfferForOneClient($user->getId());
+        $nextInscriptions = [];
+
+        foreach ($activiteInscrits as $activiteInscrit) {
+            $nextActivites[] = $activiteInscrit->getActivites()->getId();
+        }
+
+        foreach ($activities as $activity) {
+            $nextInscriptions[] = $activity->getId();
+        }
+
+        $nextActivitesInscriptions = array_diff($nextInscriptions, $nextActivites);
 
         return $this->render('dashboard/dashboard.html.twig', [
             'activities' => $activities,
             'activiteInscrits' => $activiteInscrits,
             'randonnees' => $RandonneeRepository->findInCatalogue(),
-            'offer' => $offer
+            'offer' => $offer,
+            'nextActivitesInscriptions' => $nextActivitesInscriptions,
         ]);
     }
 }
