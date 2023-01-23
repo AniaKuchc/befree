@@ -22,6 +22,8 @@ class DashboardController extends AbstractController
         $activities = $activiteRepository->findActivities();
         $offer = $souscription->findOfferForOneClient($user->getId());
         $nextInscriptions = [];
+        $nextActivitesInscriptions = [];
+        $nextActivites = [];
 
         foreach ($activiteInscrits as $activiteInscrit) {
             $nextActivites[] = $activiteInscrit->getActivites()->getId();

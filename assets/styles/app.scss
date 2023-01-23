@@ -261,11 +261,14 @@ header {
 
 .btnRetourActivite {
   background-color: $thirdColor;
+  color: $secondaryColor;
+  text-decoration: none;
   transition: 0.6s;
 }
 
 .btnRetourActivite:hover {
   opacity: 0.8;
+  color: $secondaryColor;
   background-color: $thirdColor;
 }
 
