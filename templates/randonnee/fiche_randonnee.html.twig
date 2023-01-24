@@ -56,7 +56,6 @@
                 
                 let distanceRandonne=0;
                 
-                console.log(`latlngs`, latlngs);
                 for (let i = 0; i < latlngs.length; i++) {
                     for (let a = 0; a < latlngs[i].length-1; a++) {
                     distanceRandonne += latlngs[i][a].distanceTo(latlngs[i][a+1]);
@@ -66,7 +65,7 @@
                 distanceArrondi = (distanceRandonne/1000).toFixed(2)
 
                 let distanceRandonneText = document.querySelector('.distanceRandonneText')
-                distanceRandonneText.textContent = distanceArrondi           
+                distanceRandonneText.textContent = distanceArrondi
 
                 let polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
                 map.fitBounds(polyline.getBounds());
