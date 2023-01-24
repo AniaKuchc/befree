@@ -62,7 +62,6 @@ class LoginController extends AbstractController
         $form = $this->createForm(AdresseFormType::class, $adresse);
         $form->handleRequest($request);
         $message = '';
-        // $id = $adresseRepository->findAdresses();
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $clients->setPassword(
@@ -85,12 +84,11 @@ class LoginController extends AbstractController
 
                 $clients->setAdresse($adresse);
                 $adresseRepository->save($adresse, true);
-                return $this->redirectToRoute('app_default');
+                return $this->redirectToRoute('app_profil');
             } else {
                 $message = 'La saisie n\'est pas valide';
             }
         }
-
 
         return $this->render('login/adresse_inscription.html.twig', [
             'form_adresse_inscription' => $form,
@@ -98,18 +96,4 @@ class LoginController extends AbstractController
 
         ]);
     }
-
-    // #[Route('/success', name: 'successInscription')]
-    // public function successInscription(AuthenticationUtils $authenticationUtils): Response
-    // {
-    //     $error = $authenticationUtils->getLastAuthenticationError();
-
-    //     // last username entered by the user
-    //     $lastUsername = $authenticationUtils->getLastUsername();
-
-    //     return $this->render('login/success_inscription.html.twig', [
-    //         'last_username' => $lastUsername,
-    //         'error'         => $error,
-    //     ]);
-    // }
 }

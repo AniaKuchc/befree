@@ -51,7 +51,6 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'clients', cascade: ["persist"])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Adresse $adresse = null;
-    // private Collection $adresse;
 
     public function __construct()
     {

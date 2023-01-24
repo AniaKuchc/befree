@@ -18,7 +18,7 @@ class ClientsUserFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('prenomClient', TextType::class, ['label' => 'Prénom'])
+            ->add('prenomClient', TextType::class, ['label' => 'Prénom', 'row_attr' => ['class' => 'form-floating']])
             ->add('nomClient', TextType::class, ['label' => 'Nom'])
             ->add('email', EmailType::class, ['label' => 'E-mail'])
             ->add('telephoneClient', TextType::class, ['label' => 'Téléphone'])
@@ -31,6 +31,7 @@ class ClientsUserFormType extends AbstractType
 
             ->add('selectedOffre', ChoiceType::class, [
                 'mapped' => false,
+                'label' => 'Offre',
                 'choices' => [
                     'Rando' => 4,
                     'Activité' => 5,
@@ -39,6 +40,7 @@ class ClientsUserFormType extends AbstractType
             ])
 
             ->add('enregistrer', SubmitType::class, [
+                'row_attr' => ['class' => 'col-sm-2 gap-0 ms-0 mt-3'],
                 'attr' => ['class' => 'btnRetourActivite'],
             ]);
     }

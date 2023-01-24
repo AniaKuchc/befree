@@ -1,54 +1,81 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{# {% block stylesheets %}
-    <link rel="styles" type="scss"/>
-{% endblock %} #}
-{# /* <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style> */ #}
 
-<div class="flex-container">
-    <h2 class="page-title">Formulaire d’inscription</h1>
-    <div class="inscription-form col">
+<main class="container">
+    <div class="container w-50 p-0">
+        <h1  class="mt-5 mb-3 textDashboardColor text-start">Formulaire d’inscription</h1>
+    </div>
+    <div class="background-clear container w-50 p-5 m-auto">
+    {% form_theme form_adresse_inscription 'bootstrap_5_layout.html.twig' %}
         {{ form_start(form_adresse_inscription) }}
+
             {% for client in form_adresse_inscription.clients %}
-            <div class="inscription-form-row">
-                {{ form_row(client.prenomClient) }}
-                {{ form_row(client.nomClient) }}
+            <div class="row container">
+                <div class="col-6 d-flex flex-column">
+                    {{ form_label(client.prenomClient) }}
+                    {{ form_widget(client.prenomClient, {'attr': {'placeholder': 'ex. Pierre'}}) }}
+                </div>
+                <div class="col-6 d-flex flex-column">
+                    {{ form_label(client.nomClient) }}
+                    {{ form_widget(client.nomClient, {'attr': {'placeholder': 'ex. Dupont'}}) }}
+                </div>
             </div>
-            <div class="inscription-form-row">
-                {{ form_row(client.email) }}
-                {{ form_row(client.telephoneClient) }}
+            <div class="row container">
+                <div class="col-6 d-flex flex-column">
+                    {{ form_label(client.email) }}
+                    {{ form_widget(client.email, {'attr': {'placeholder': 'ex. pierre@gmail.com'}}) }}
+                </div>
+                <div class="col-6 d-flex flex-column">
+                    {{ form_label(client.telephoneClient) }}
+                    {{ form_widget(client.telephoneClient, {'attr': {'placeholder': 'ex. 0781963214'}}) }}
+                </div>
             </div>
             {% endfor %}
-            <div class="inscription-form-row">
-                <div class="inscription-form-row-nr">
-                    {{ form_row(form_adresse_inscription.numeroAdresse) }}
+
+            <div class="row container">
+                <div class="col-4 d-flex flex-column">
+                    {# {{ form_row(form_adresse_inscription.numeroAdresse) }} #}
+                    {{ form_label(form_adresse_inscription.numeroAdresse) }}
+                    {{ form_widget(form_adresse_inscription.numeroAdresse, {'attr': {'placeholder': 'ex. 170'}}) }}
                 </div>
-                    {{ form_row(form_adresse_inscription.rueAdresse) }}
+                <div class="col-8 d-flex flex-column">
+                    {# {{ form_row(form_adresse_inscription.rueAdresse) }} #}
+                    {{ form_label(form_adresse_inscription.rueAdresse) }}
+                    {{ form_widget(form_adresse_inscription.rueAdresse, {'attr': {'placeholder': 'ex. Rue Raimon de Trencavel'}}) }}
+                </div>
             </div>
-            <div class="inscription-form-row">
-                <div class="inscription-form-row-nr">
-                    {{ form_row(form_adresse_inscription.codePostalAdresse) }}
+
+            <div class="row container">
+                <div class="col-4 d-flex flex-column">
+                    {# {{ form_row(form_adresse_inscription.codePostalAdresse, {'attr': {'data-row-class': 'w-100'} }) }} #}
+                    {{ form_label(form_adresse_inscription.codePostalAdresse) }}
+                    {{ form_widget(form_adresse_inscription.codePostalAdresse, {'attr': {'placeholder': 'ex. 34070'}}) }}
                 </div>
-                <div class="inscription-form-row-address">
-                    {{ form_row(form_adresse_inscription.villeAdresse) }}
+                <div class="col-8 d-flex flex-column">
+                    {# {{ form_row(form_adresse_inscription.villeAdresse, {'attr': {'data-row-class': 'w-100 mr-0 d-flex align-content-end'} }) }} #}
+                    {{ form_label(form_adresse_inscription.villeAdresse) }}
+                    {{ form_widget(form_adresse_inscription.villeAdresse, {'attr': {'placeholder': 'ex. Montpellier'}}) }}
                 </div>
             </div>
-            <div class="inscription-form-row">
+
+            <div class="row container">
                 {% for client in form_adresse_inscription.clients %}
-                    {{ form_row(client.password) }}
+                    <div class="col-12 d-flex flex-column">
+                        {{ form_row(client.selectedOffre) }}
+                    </div>
+                    <div class="col-12 d-flex flex-column">
+                        {{ form_row(client.password) }}
+                    </div>
                 {% endfor %}
             </div>
 
         {{ form_end(form_adresse_inscription) }}
+        <div class="privacy-policy">
+            <p>En cliquant sur inscription, vous acceptez les conditions d'utilisation de BeFree.<br>
+            Pour en savoir plus sur la manière dont BeFree collecte, utilise, partage et protège vos données personnelles, veuillez consulter la Politique de confidentialité de BeFree.</p>
+        </div>
     </div>
-    <div class="privacy-policy">
-        <p>En cliquant sur inscription, vous acceptez les conditions d'utilisation de BeFree.<br>
-        Pour en savoir plus sur la manière dont BeFree collecte, utilise, partage et protège vos données personnelles, veuillez consulter la Politique de confidentialité de BeFree.</p>
-    </div>
-</div>
-{# {{ dump(adresse) }} #}
+</main>
+
 {% endblock %}
