@@ -127,6 +127,7 @@ header {
   justify-content: center;
   align-items: center;
 }
+
 .logoBanner {
   width: 20%;
 }
@@ -515,6 +516,7 @@ label.required:before {
   color: #e07e59;
   font-weight: bold;
 }
+
 //End inscription form
 
 //Profil page
@@ -536,13 +538,29 @@ label.required:before {
   display: none;
 }
 
+
+
+
 @media screen and (max-width: 768px) {
   .nav__links {
     display: flex;
     justify-content: flex-end;
+
+
+    ul {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 80px;
+      background-color: $primaryColor;
+      height: auto;
+      padding-bottom: 25px;
+      font-size: 1.3em;
+
+    }
   }
 
-  .nav__links ul {
+  .noDisplay {
     display: none;
   }
 
@@ -552,6 +570,34 @@ label.required:before {
     margin-right: 25px;
   }
 }
+
+// .nav__links {
+//   width: 80%;
+//   height: 80px;
+//   flex: 2 1 auto;
+
+//   ul {
+//     height: 80px;
+//     display: flex;
+//     justify-content: flex-end;
+//     list-style: none;
+
+//     li {
+//       display: flex;
+//       align-items: center;
+//       text-align: center;
+//       word-break: keep-all;
+//       // background-color: #E07E59;
+//     }
+
+//     li a {
+//       word-break: keep-all;
+//       text-decoration: none;
+//       color: $secondaryColor;
+//       padding: 10px;
+//     }
+//   }
+// }
 
 @media screen and (max-width: 992px) {
   .card-img-top {
