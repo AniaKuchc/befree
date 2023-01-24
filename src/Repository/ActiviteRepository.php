@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Activite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Mapping\OrderBy;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -45,10 +46,31 @@ class ActiviteRepository extends ServiceEntityRepository
     public function findActivities(): array
     {
         return $this->createQueryBuilder('act')
-            ->orderBy('act.dateActivite', 'DESC')
+            ->orderBy('act.dateActivite', 'ASC')
             ->getQuery()
             ->getResult();
     }
+
+
+    public function findActivitiesForPersonnel(int $idPersonnel)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT a, p
+            FROM App\Entity\Activite a
+            INNER JOIN a.personnels p
+            WHERE p.id = :id'
+
+        )->setParameter('id', $idPersonnel);
+
+
+        return $query->getResult();
+    }
+
+
+
+
 
 
 
