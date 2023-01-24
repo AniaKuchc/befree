@@ -19,9 +19,11 @@
 
         {% block javascripts %}
              {{ encore_entry_script_tags('app') }} 
+             {{ encore_entry_script_tags('burger') }} 
         {% endblock %}
     </head>
     <body>
+  
 
         <nav>   
             <div class='nav__logo'>
@@ -29,7 +31,7 @@
             </div>
 
             <div class='nav__links'>
-                <ul>
+                <ul id='burger__menu'>
                     <li><a href="{{ path('app_default') }}">Accueil</a></li>                
                     {% if is_granted('ROLE_ACCOMPAGNATEUR') %}
                         <li><a href="{{ path('app_calendrier') }}">Mon calendrier</a></li>
@@ -40,7 +42,7 @@
                             <li><a href="{{ path('app_dashboard') }}">Tableau de bord</a></li>                        
                             <li><a href="{{ path('app_profil') }}">Mon profil</a></li>
                         {% endif %}                
-                    <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                            <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
                         {% if is_granted('ROLE_ADMIN') %}
                             <li><a href="{{ path('admin') }}">Administration</a></li>
                         {% endif %}
