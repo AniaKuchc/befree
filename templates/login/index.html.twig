@@ -7,8 +7,8 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 <div class="flex-container">
-    <h2 class="page-title">Formulaire de connexion</h2>
-    <div class="inscription-form">
+    <h1  class="mt-5 mb-3 textDashboardColor text-start">Formulaire de connexion</h1>
+    <div class="background-clear">
         <form action="{{ path('app_login') }}" method="post" class='form-group justify-content-center d-flex flex-column align-items-center'>
         <div class="d-flex flex-column">
             <label for="username" class="form-label">E-mail:</label>

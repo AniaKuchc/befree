@@ -382,11 +382,6 @@ header {
 }
 
 //Inscription form
-.inscripton {
-  display: flex;
-  flex-direction: row;
-}
-
 .privacy-policy {
   display: flex;
   text-align: center;
@@ -394,47 +389,13 @@ header {
   color: $secondaryColor;
 }
 
-.flex-container {
-  margin-top: 4em;
-  max-width: 65%;
-}
-
-.inscription-form {
-  background-color: $primaryColor;
-  display: flex;
-  justify-content: center;
-  padding: 5em 8em;
-  width: 100%;
-}
-
-.col-form-label,
-.form-label {
-  font-size: 16px;
+.row {
   color: $secondaryColor;
-  width: 18em;
+  padding-top: 1.2em;
 }
 
-.col-sm-10 {
-  max-width: 15em;
-}
-
-.inscription-form-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.inscription-form-row-nr {
-  max-width: 8em;
-}
-
-label.required:before {
-  content: "*";
-}
-
-.link_inscription:hover {
-  color: $thirdColor;
-  font-weight: bold;
+::placeholder {
+  font-size: 0.8em;
 }
 
 label.required:before {
@@ -448,6 +409,10 @@ label.required:before {
   font-weight: bold;
 }
 
+.inscripton {
+  color: $secondaryColor;
+}
+
 #username {
   margin-bottom: 1em;
 }
@@ -455,15 +420,27 @@ label.required:before {
 #password {
   margin-bottom: 2em;
 }
+
+.link_inscription:hover {
+  color: $thirdColor;
+  font-weight: bold;
+}
+
+.col-form-label,
+.form-label {
+  font-size: 16px;
+  color: $secondaryColor;
+  width: 18em;
+}
+
+.background-clear {
+  margin-top: 2em;
+  background-color: $primaryColor;
+  padding: 3em 6em;
+}
 //End connexion form
 
 //Profil page
-.background {
-  background-color: $primaryColor;
-  padding: 5em 8em;
-  width: 100%;
-}
-
 table {
   color: $secondaryColor;
   font-size: 20x;
@@ -478,7 +455,6 @@ table th {
   display: flex;
   justify-content: space-between;
 }
-
 //End profil page
 
 .ficheActivite {
