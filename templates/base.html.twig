@@ -20,7 +20,8 @@
         {% block javascripts %}
              {{ encore_entry_script_tags('app') }} 
              {{ encore_entry_script_tags('burger') }} 
-             {{ encore_entry_script_tags('caroussel') }} 
+             {{ encore_entry_script_tags('caroussel') }}
+             {{ encore_entry_script_tags('randonnee') }}  
         {% endblock %}
     </head>
     <body>
@@ -34,7 +35,7 @@
             <div class='nav__links'>
                 <ul id='burger__menu'>
                     <li><a href="{{ path('app_default') }}">Accueil</a></li>                
-                    {% if is_granted('ROLE_ACCOMPAGNATEUR') %}
+                    {% if is_granted('ROLE_ACCOMPAGNATEUR') or is_granted('ROLE_ADMIN') %}
                         <li><a href="{{ path('app_calendrier') }}">Mon calendrier</a></li>
                     {% endif %}              
                     

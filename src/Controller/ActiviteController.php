@@ -6,6 +6,7 @@ use App\Entity\Activite;
 use App\Entity\InscriptionClientsActivite;
 use App\Repository\ActiviteRepository;
 use App\Repository\InscriptionClientsActiviteRepository;
+use App\Repository\PersonnelsRepository;
 use App\Repository\SouscriptionClientOffreRepository;
 use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -112,5 +113,24 @@ class ActiviteController extends AbstractController
         $activiteRepo->save($activite, true);
 
         return $this->redirectToRoute('app_fiche_activite', ['id' => $activite->getId()]);
+    }
+
+    #[Route('/calendrier/add/{id}', name: 'app_assignation_accompagnateur')]
+    public function assignPersonnel(Activite $activite, ActiviteRepository $activiteRepository, PersonnelsRepository $personnelsRepository, UserInterface $user): Response
+    {
+        $activite->addPersonnel($personnelsRepository->find($_POST['accompagnateur']));
+        $activiteRepository->save($activite, true);
+
+        return $this->redirectToRoute('app_calendrier');
+    }
+
+    #[Route('/calendrier/remove/{id}', name: 'app_remove_accompagnateur')]
+    public function removePersonnel(Activite $activite, ActiviteRepository $activiteRepository, PersonnelsRepository $personnelsRepository, UserInterface $user): Response
+    {
+        $activite->removePersonnel($personnelsRepository->find($_POST['accompagnateur']));
+        $activiteRepository->save($activite, true);
+
+
+        return $this->redirectToRoute('app_calendrier');
     }
 }

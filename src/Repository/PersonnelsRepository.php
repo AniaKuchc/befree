@@ -63,6 +63,34 @@ class PersonnelsRepository extends ServiceEntityRepository implements PasswordUp
             ->getResult();
     }
 
+    public function findPersonnelsForOneActivity(int $idActivity)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p, a 
+            FROM App\Entity\Personnels p
+            INNER JOIN p.activites a
+            WHERE a.id = :id'
+        )->setParameter('id', $idActivity);
+
+        return $query->getResult();
+    }
+
+    public function findAllPersonnels()
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p, a 
+            FROM App\Entity\Personnels p
+            INNER JOIN p.activites a '
+        );
+
+
+        return $query->getResult();
+    }
+
     //    /**
     //     * @return Personnels[] Returns an array of Personnels objects
     //     */
