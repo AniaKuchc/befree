@@ -5,22 +5,51 @@
 {% block body %}
 {# {{ path('app_profil') }} #}
 <div class="flex-container">
-    <h1 class="mt-4">Bienvenue {{ user.prenomClient }} !</h1>
-    <div class="inscription-form col">
-        <ul class="list-unstyled">
-            <h4>Votre profil :</h2>
-            <li>Prénom : {{ user.prenomClient }}</li>
-            <li>Nom :{{ user.nomClient }}</li>
-            <li>Email : {{ user.email }}</li>
-            <li>Téléphone :{{ user.telephoneClient }}</li>
-            <li>Numero Adresse : {{ user.adresse.numeroAdresse }}</li>
-            <li>Rue : {{ user.adresse.rueAdresse }}</li>
-            <li>Code postal : {{ user.adresse.codePostalAdresse }}</li>
-            <li>Ville : {{ user.adresse.villeAdresse }}</li>
-            <li>Offre : {{ offerSubscribed[0].offres.nomOffre }}</li>
+    <h1 class="mt-5 mb-3 textDashboardColor text-start">Bienvenue {{ user.prenomClient }} !</h1>
+    <div class="background">
+        <table>
+            <h2>Votre profil :</h2>
+            <tr>
+                <th>Prénom :</th>
+                <td> {{ user.prenomClient }}</td>
+            </tr>
+            <tr>
+                <th>Nom :</th>
+                <td>{{ user.nomClient }}</td>
+            </tr>
+            <tr>
+                <th>Email :</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone :</th>
+                <td>{{ user.telephoneClient }}</td>
+            </tr>
+            <tr>
+                <th>Numero Adresse :</th>
+                <td>{{ user.adresse.numeroAdresse }}</td>
+            </tr>
+            <tr>
+                <th>Rue :</th>
+                <td>{{ user.adresse.rueAdresse }}</td>
+            </tr>
+            <tr>
+                <th>Code postal :</th>
+                <td>{{ user.adresse.codePostalAdresse }}</td>
+            </tr>
+            <tr>
+                <th>Ville :</th>
+                <td>{{ user.adresse.villeAdresse }}</td>
+            </tr>
+            <tr>
+                <th>Offre :</th>
+                <td>{{ offerSubscribed[0].offres.nomOffre }}</td>
+            </tr>
+        </table>
+        <div class="buttons-profil">
             <button class='btn btnRetourActivite'><a href='{{ path('app_update_profil',  {id:user.id}) }}'> Modifier </a></button>
             <button class='btn btnRetourActivite'><a onclick='confirmDelete()'> Supprimer </a></button>
-        </ul>
+        </div>
     </div>  
 </div>
 

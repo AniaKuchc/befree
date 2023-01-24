@@ -20,7 +20,7 @@ h1 {
 
 h2 {
   font-size: 32px;
-  color: #3e6765;
+  color: $secondaryColor;
   margin-bottom: 2rem;
 }
 
@@ -56,7 +56,7 @@ nav {
       align-items: center;
       text-align: center;
       word-break: keep-all;
-      // background-color: #E07E59;
+      // background-color: $thirdColor;
     }
 
     li a {
@@ -69,7 +69,7 @@ nav {
 }
 
 .link_inscription {
-  color: #e07e59;
+  color: $thirdColor;
 }
 
 footer {
@@ -149,7 +149,7 @@ header {
     width: 300px;
 
     height: 330px;
-    background-color: #d9e2d5;
+    background-color: $primaryColor;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -162,7 +162,7 @@ header {
     &__content {
       width: 100%;
       height: 200px;
-      background-color: #3e6765;
+      background-color: $secondaryColor;
       color: #fff;
       padding: 10px;
       text-align: center;
@@ -192,7 +192,7 @@ header {
 }
 
 .textDashboardColor {
-  color: #3e6765;
+  color: $secondaryColor;
 }
 
 .cardBackground {
@@ -285,7 +285,7 @@ header {
   font-size: 1.5em;
   border-radius: 50%;
   background-color: #eaeaea;
-  color: #3e6765;
+  color: $secondaryColor;
   position: relative;
   top: -20%;
 }
@@ -296,7 +296,7 @@ header {
   background-color: $primaryColor;
   padding: 50px 25px 100px 25px;
   text-align: center;
-  color: #3e6765;
+  color: $secondaryColor;
 }
 
 .offers {
@@ -312,7 +312,7 @@ header {
     width: 320px;
     height: 350px;
     border-radius: 15px;
-    background-color: #d9e2d5;
+    background-color: $primaryColor;
     color: $secondaryColor;
     text-align: center;
     margin-top: 50px;
@@ -320,7 +320,7 @@ header {
     &__header {
       width: 100%;
       height: 80px;
-      background-color: #3e6765;
+      background-color: $secondaryColor;
       color: $thirdColor;
       border-radius: 15px 15px 0px 0px;
       display: flex;
@@ -358,7 +358,7 @@ header {
   &__card {
     width: 300px;
     height: 200px;
-    background-color: #3e6765;
+    background-color: $secondaryColor;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -373,87 +373,13 @@ header {
 }
 
 .accordion {
-  --bs-accordion-active-color: #e07e59;
-  --bs-accordion-active-bg: #3e6765;
+  --bs-accordion-active-color: $thirdColor;
+  --bs-accordion-active-bg: $secondaryColor;
 }
 
 .accordion-button {
   background-color: $primaryColor;
 }
-
-//Inscription form
-.flex-container {
-  margin-top: 4em;
-  max-width: 65%;
-}
-
-.inscription-form {
-  background-color: #d9e2d5;
-  display: flex;
-  justify-content: center;
-  padding: 5em 8em;
-  width: 100%;
-}
-
-.col-form-label,
-.form-label {
-  font-size: 16px;
-  color: #3e6765;
-  width: 18em;
-}
-
-.col-sm-10 {
-  max-width: 15em;
-}
-
-.inscription-form-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.inscription-form-row-nr {
-  max-width: 8em;
-}
-
-.button {
-  margin-top: 2em;
-  color: #3e6765;
-  background-color: #e07e59;
-  width: 10em;
-  border-radius: 8px;
-  border: none;
-  padding: 0.5em;
-  font-size: 0.8em;
-  justify-content: center;
-}
-
-.button:hover {
-  cursor: pointer;
-  background-color: #e07e59;
-  font-weight: bold;
-  color: #3e6765;
-}
-
-label.required:before {
-  content: "*";
-}
-
-//Connexion form
-.link_inscription:hover {
-  color: #e07e59;
-  font-weight: bold;
-}
-
-#username {
-  margin-bottom: 1em;
-}
-
-#password {
-  margin-bottom: 2em;
-}
-
-//End connexion form
 
 //Inscription form
 .inscripton {
@@ -465,12 +391,7 @@ label.required:before {
   display: flex;
   text-align: center;
   font-size: 0.6em;
-  color: #3e6765;
-}
-
-.inscripton {
-  display: flex;
-  flex-direction: row;
+  color: $secondaryColor;
 }
 
 .flex-container {
@@ -479,7 +400,7 @@ label.required:before {
 }
 
 .inscription-form {
-  background-color: #d9e2d5;
+  background-color: $primaryColor;
   display: flex;
   justify-content: center;
   padding: 5em 8em;
@@ -489,7 +410,7 @@ label.required:before {
 .col-form-label,
 .form-label {
   font-size: 16px;
-  color: #3e6765;
+  color: $secondaryColor;
   width: 18em;
 }
 
@@ -512,12 +433,51 @@ label.required:before {
 }
 
 .link_inscription:hover {
-  color: #e07e59;
+  color: $thirdColor;
   font-weight: bold;
+}
+
+label.required:before {
+  content: "*";
 }
 //End inscription form
 
+//Connexion form
+.link_inscription:hover {
+  color: $thirdColor;
+  font-weight: bold;
+}
+
+#username {
+  margin-bottom: 1em;
+}
+
+#password {
+  margin-bottom: 2em;
+}
+//End connexion form
+
 //Profil page
+.background {
+  background-color: $primaryColor;
+  padding: 5em 8em;
+  width: 100%;
+}
+
+table {
+  color: $secondaryColor;
+  font-size: 20x;
+}
+
+table th {
+  padding: 0.5em;
+}
+
+.buttons-profil {
+  margin-top: 1em;
+  display: flex;
+  justify-content: space-between;
+}
 
 //End profil page
 
