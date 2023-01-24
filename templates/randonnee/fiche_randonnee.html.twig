@@ -11,10 +11,11 @@
         <section class='ficheActivite'>                  
 
             <h2>Description</h2>
-                <ul>
-                    <li>Ville de départ: {{randonnee.villeRandonnee}}</li>                         
-                    <li>Coordonnées du point de départ: {{randonnee.geopointRandonnee}}</li>                         
-                </ul>
+
+                    <p> &#127968 Ville de départ: {{randonnee.villeRandonnee}}<p>                         
+                    <p> &#129517 Coordonnées du point de départ: {{randonnee.geopointRandonnee}}<p>                         
+                    <p> &#129406 Distance du parcours : <span class='distanceRandonneText'></span> km</p>                         
+
 
             <h2>Parcours</h2>
             
@@ -44,6 +45,7 @@
                 // Boucler à travers tous les points de coordonnées
                 geojson.eachLayer(function (layer) {
                 let latlngs = layer.getLatLngs();
+                
                 // Boucler à travers tous les points de coordonnées dans chaque géométrie
                 for (let i = 0; i < latlngs.length; i++) {
                     let latlng = latlngs[i];
@@ -51,6 +53,21 @@
                     // Inverser les coordonnées
                     latlng.reverse();
                 }
+                
+                let distanceRandonne=0;
+                
+                console.log(`latlngs`, latlngs);
+                for (let i = 0; i < latlngs.length; i++) {
+                    for (let a = 0; a < latlngs[i].length-1; a++) {
+                    distanceRandonne += latlngs[i][a].distanceTo(latlngs[i][a+1]);
+                }
+                }
+
+                distanceArrondi = (distanceRandonne/1000).toFixed(2)
+
+                let distanceRandonneText = document.querySelector('.distanceRandonneText')
+                distanceRandonneText.textContent = distanceArrondi           
+
                 let polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
                 map.fitBounds(polyline.getBounds());
                 });

@@ -538,14 +538,10 @@ label.required:before {
   display: none;
 }
 
-
-
-
 @media screen and (max-width: 768px) {
   .nav__links {
     display: flex;
     justify-content: flex-end;
-
 
     ul {
       display: none;
@@ -556,7 +552,6 @@ label.required:before {
       height: auto;
       padding-bottom: 25px;
       font-size: 1.3em;
-
     }
   }
 

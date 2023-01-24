@@ -10,7 +10,7 @@
         <h2 class="mb-2 textDashboardColor">Mes activités à venir : </h2>
         <div class=" row container justify-content-lg-between justify-content-center align-items-center ContainerActivite ms-1">
             <div class="btnPreviousActivite col-1 text-center d-flex align-items-center justify-content-center btnColor my-2 my-md-0"><svg class='arrowColor arrowPreviousActivite ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">-<path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></div>
-                {% for activiteInscrit in activiteInscrits|sort((a, b) => b.activites.dateActivite <=> a.activites.dateActivite) %}
+                {% for activiteInscrit in activiteInscrits|sort((a, b) => a.activites.dateActivite <=> b.activites.dateActivite) %}
                     {% if activiteInscrit.activites.afficherActivite is same as true and "now"|date('Y-m-d') < activiteInscrit.activites.dateActivite|date('Y-m-d') and activiteInscrit.activites.activiteOffre.id is same as offer.offres.id %}
                     <div class="col-lg-3 my-2 inactiveActivite">
                         <div class="card cardBackground ContainerCard">
@@ -75,7 +75,7 @@
         <h2 class="mb-2 textDashboardColor">Historique de mes activités : </h2>
         <div class=" row container justify-content-lg-between justify-content-center align-items-center ContainerHistorique ms-1">
             <div class="btnPreviousHistorique col-1 text-center d-flex align-items-center justify-content-center btnColor my-2 my-md-0"><svg class='arrowColor arrowPreviousHistorique ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">-<path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></div>
-                {% for activity in activities %}
+                {% for activity in activities|sort((a, b) => b.dateActivite <=> a.dateActivite) %}
                     {% if activity.afficherActivite is same as true and "now"|date('Y-m-d') > activity.dateActivite|date('Y-m-d') and activity.activiteOffre.id is same as offer.offres.id %}
                     {% if activity.id not in nextActivitesInscriptions %}  
                     <div class="col-lg-3 my-2 inactiveHistorique">

@@ -45,7 +45,7 @@ class ActiviteRepository extends ServiceEntityRepository
     public function findActivities(): array
     {
         return $this->createQueryBuilder('act')
-            ->orderBy('act.dateActivite', 'DESC')
+            ->orderBy('act.dateActivite', 'ASC')
             ->getQuery()
             ->getResult();
     }
