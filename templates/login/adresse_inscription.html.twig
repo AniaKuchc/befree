@@ -35,12 +35,10 @@
 
             <div class="row container">
                 <div class="col-4 d-flex flex-column">
-                    {# {{ form_row(form_adresse_inscription.numeroAdresse) }} #}
                     {{ form_label(form_adresse_inscription.numeroAdresse) }}
                     {{ form_widget(form_adresse_inscription.numeroAdresse, {'attr': {'placeholder': 'ex. 170'}}) }}
                 </div>
                 <div class="col-8 d-flex flex-column">
-                    {# {{ form_row(form_adresse_inscription.rueAdresse) }} #}
                     {{ form_label(form_adresse_inscription.rueAdresse) }}
                     {{ form_widget(form_adresse_inscription.rueAdresse, {'attr': {'placeholder': 'ex. Rue Raimon de Trencavel'}}) }}
                 </div>
@@ -48,12 +46,10 @@
 
             <div class="row container">
                 <div class="col-4 d-flex flex-column">
-                    {# {{ form_row(form_adresse_inscription.codePostalAdresse, {'attr': {'data-row-class': 'w-100'} }) }} #}
                     {{ form_label(form_adresse_inscription.codePostalAdresse) }}
                     {{ form_widget(form_adresse_inscription.codePostalAdresse, {'attr': {'placeholder': 'ex. 34070'}}) }}
                 </div>
                 <div class="col-8 d-flex flex-column">
-                    {# {{ form_row(form_adresse_inscription.villeAdresse, {'attr': {'data-row-class': 'w-100 mr-0 d-flex align-content-end'} }) }} #}
                     {{ form_label(form_adresse_inscription.villeAdresse) }}
                     {{ form_widget(form_adresse_inscription.villeAdresse, {'attr': {'placeholder': 'ex. Montpellier'}}) }}
                 </div>

@@ -20,7 +20,7 @@ class DashboardController extends AbstractController
 
         $activiteInscrits = $inscription->findActivityPerClient($user->getId());
         $activities = $activiteRepository->findActivities();
-        $offer = $souscription->findOfferForOneClient($user->getId());
+        $offer = $souscription->findLastOfferForOneClient($user->getId());
         $nextInscriptions = [];
         $nextActivitesInscriptions = [];
         $nextActivites = [];
