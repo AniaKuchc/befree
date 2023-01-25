@@ -72,6 +72,12 @@ nav {
   color: $thirdColor;
 }
 
+.activeLink a {
+  background-color: $thirdColor !important;
+  height: 100%;
+  padding-top: 1.5rem !important;
+}
+
 footer {
   width: 100%;
   height: 300px;
@@ -374,8 +380,8 @@ header {
 }
 
 .accordion {
-  --bs-accordion-active-color: $thirdColor;
-  --bs-accordion-active-bg: $secondaryColor;
+  --bs-accordion-active-color: #e07e59;
+  --bs-accordion-active-bg: #3e6765;
 }
 
 .accordion-button {
@@ -503,6 +509,12 @@ table th {
     display: flex;
     width: 1.5em;
     margin-right: 25px;
+  }
+
+  .activeLink a {
+    padding-top: 0rem !important;
+    color: $thirdColor !important;
+    background-color: $primaryColor !important;
   }
 }
 
