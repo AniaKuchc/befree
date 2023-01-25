@@ -34,7 +34,7 @@ class ActiviteController extends AbstractController
         $activiteInscrits = $inscription->findActivityPerClient($user->getId());
         $activities = $activiteRepository->findActivities();
         $nextInscriptions = [];
-        $offer = $souscription->findOfferForOneClient($user->getId());
+        $offer = $souscription->findLastOfferForOneClient($user->getId());
         $nextActivites = [];
         $nextInscriptions = [];
         $nextActivitesInscriptions = [];

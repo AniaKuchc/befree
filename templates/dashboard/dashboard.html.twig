@@ -6,6 +6,7 @@
 
 <div class='container'>
     <h1 class="mt-5 mb-3 textDashboardColor text-start">Mon tableau de bord</h1>
+    {% if activiteInscrits|length > 0 %}
     <div class=" p-3 my-4 containerDashboardColor container">
         <h2 class="mb-2 textDashboardColor">Mes activités à venir : </h2>
         <div class=" row container justify-content-lg-between justify-content-center align-items-center ContainerActivite ms-1">
@@ -26,6 +27,7 @@
             <div class="btnNextActivite col-1 text-center d-flex align-items-center justify-content-center btnColor my-2 my-md-0"><svg class='arrowColor arrowNextActivite ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg></div>    
         </div>
     </div>
+    {% endif %}
 
 
     <div class="p-4 my-4 containerDashboardColor ">

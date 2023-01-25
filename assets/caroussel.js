@@ -14,7 +14,9 @@ function sliderActivite() {
     count = i;
   }
 
-  btnNextActivite.addEventListener("click", nextSlides);
+  if (btnNextActivite) {
+    btnNextActivite.addEventListener("click", nextSlides);
+  }
 
   function nextSlides() {
     let active = cardWrapperActivite[count + 1];
@@ -24,7 +26,9 @@ function sliderActivite() {
     count = count + 1;
   }
 
-  btnPreviousActivite.addEventListener("click", previousSlides);
+  if (btnPreviousActivite) {
+    btnPreviousActivite.addEventListener("click", previousSlides);
+  }
 
   function previousSlides() {
     let active = cardWrapperActivite[count - 3];
@@ -53,8 +57,9 @@ function sliderInscription() {
     count = i;
   }
 
-  btnNextInscription.addEventListener("click", nextSlides);
-
+  if (btnNextInscription) {
+    btnNextInscription.addEventListener("click", nextSlides);
+  }
   function nextSlides() {
     let active = cardWrapperInscription[count + 1];
     let inactive = cardWrapperInscription[count - 2];
@@ -63,7 +68,9 @@ function sliderInscription() {
     count = count + 1;
   }
 
-  btnPreviousInscription.addEventListener("click", previousSlides);
+  if (btnPreviousInscription) {
+    btnPreviousInscription.addEventListener("click", previousSlides);
+  }
 
   function previousSlides() {
     let active = cardWrapperInscription[count - 3];
@@ -92,7 +99,9 @@ function sliderHistorique() {
     count = i;
   }
 
-  btnNextHistorique.addEventListener("click", nextSlides);
+  if (btnNextHistorique) {
+    btnNextHistorique.addEventListener("click", nextSlides);
+  }
 
   function nextSlides() {
     let active = cardWrapperHistorique[count + 1];
@@ -102,7 +111,9 @@ function sliderHistorique() {
     count = count + 1;
   }
 
-  btnPreviousHistorique.addEventListener("click", previousSlides);
+  if (btnPreviousHistorique) {
+    btnPreviousHistorique.addEventListener("click", previousSlides);
+  }
 
   function previousSlides() {
     let active = cardWrapperHistorique[count - 3];

@@ -19,7 +19,7 @@
             <p>&#8987 Places restantes: {{activite.placeMaximum}}</p>
             &#128214{{activite.descriptionActivite|striptags}}
             <div class='d-flex mt-4'>    
-            {% if not is_granted('ROLE_ADMIN') %}
+            {% if not is_granted('ROLE_ADMIN') and not is_granted('ROLE_ACCOMPAGNATEUR')%}
                 {% if isRegister == null %}    
                     {% if placesRestantes > 0 %}
                     <a href='{{ path('app_inscription_activite', { id: activite.id }) }}' class='btn btn-warning'>Je m'inscris</a>
@@ -30,9 +30,9 @@
                     <p>Vous etes déjà inscris à cette activité!</p></div>
                     <div>
                     <a href='{{ path('app_desinscription_activite', { id: activite.id }) }}' class='btn btn-danger'>Me désinscrire</a>
+                <button class='btn btnRetourActivite ms-3'><a href='{{ path('app_dashboard') }}'> Retour </a></button> 
                 {% endif %}
             {% endif %}
-                <button class='btn btnRetourActivite ms-3'><a href='{{ path('app_activites_futures') }}'> Retour </a></button> 
             </div>  
         </div>
     </div>
