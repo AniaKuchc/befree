@@ -80,7 +80,7 @@ class LoginController extends AbstractController
 
                 $clients->setAdresse($adresse);
                 $adresseRepository->save($adresse, true);
-                return $this->redirectToRoute('app_profil');
+                return $this->redirectToRoute('app_login');
             } else {
                 $message = 'La saisie n\'est pas valide';
             }
