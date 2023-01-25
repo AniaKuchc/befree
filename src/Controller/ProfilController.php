@@ -35,6 +35,7 @@ class ProfilController extends AbstractController
         $message = '';
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
+                $this->addFlash('success', 'Article Created! Knowledge is power!');
                 $clients->setPassword(
                     $this->userPasswordHasherInterface->hashPassword(
                         $clients,
@@ -60,8 +61,6 @@ class ProfilController extends AbstractController
                 $message = 'La saisie n\'est pas valide';
             }
         }
-
-
         return $this->render('login/adresse_inscription.html.twig', [
             'form_adresse_inscription' => $form,
             'message' => $message,

@@ -7,7 +7,7 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 <div class="flex-container">
-    <h1  class="mt-5 mb-3 textDashboardColor text-start">Formulaire de connexion</h1>
+    <h2 class="page-title">Formulaire de connexion</h2>
     <div class="background-clear">
         <form action="{{ path('app_login') }}" method="post" class='form-group justify-content-center d-flex flex-column align-items-center'>
         <div class="d-flex flex-column">
@@ -19,6 +19,7 @@
 
             {# If you want to control the URL the user is redirected to on success
             <input type="hidden" name="_target_path" value="/account"> #}
+            <input type="hidden" name="_target_path" value="/dashboard">
 
         </div>
             <button type="submit" class='btn btnRetourActivite'>Se connecter</button>
@@ -26,7 +27,9 @@
     </div>
     <div class="inscripton fs-6 text">
         <p>Première visite sur BeFree ? <a class="link_inscription fs-6 text" href="{{ path('app_premiere_inscription')}}">Inscrivez-vous</a></p>
+        
     </div>
+
 
 </div>
 {% endblock %}
