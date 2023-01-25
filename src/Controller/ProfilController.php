@@ -61,8 +61,6 @@ class ProfilController extends AbstractController
                 $message = 'La saisie n\'est pas valide';
             }
         }
-
-
         return $this->render('login/adresse_inscription.html.twig', [
             'form_adresse_inscription' => $form,
             'message' => $message,

@@ -8,15 +8,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\Clients;
 use App\Entity\Adresse;
-use App\Entity\Offre;
 use App\Entity\SouscriptionClientOffre;
 use App\Form\AdresseFormType;
-use App\Form\ClientsUserFormType;
 use App\Repository\AdresseRepository;
 use App\Repository\ClientsRepository;
 use App\Repository\OffreRepository;
-use App\Repository\PrestataireRepository;
-use App\Repository\TypePrestataireRepository;
 use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -33,6 +29,7 @@ class LoginController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('login/index.html.twig', [
+            'server' => $_SERVER['HTTP_REFERER'],
             'last_username' => $lastUsername,
             'error'         => $error,
         ]);
@@ -53,7 +50,7 @@ class LoginController extends AbstractController
     }
 
     #[Route('/inscription', name: 'app_premiere_inscription')]
-    public function adresseInscription(Request $request, OffreRepository $offreRepository, ClientsRepository $clientsRepository, AdresseRepository $adresseRepository): Response
+    public function adresseInscription(Request $request, OffreRepository $offreRepository, AdresseRepository $adresseRepository): Response
     {
         $adresse = new Adresse;
         $clients = new Clients;
