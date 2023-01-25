@@ -16,8 +16,10 @@ class CalendrierController extends AbstractController
     #[Route('/calendrier', name: 'app_calendrier')]
     public function show(ActiviteRepository $activiteRepository, PersonnelsRepository $personnelsRepository, UserInterface $user): Response
     {
+        //On récupère les activités
         $activites = $activiteRepository->findActivities();
         $accompagnateurs = [];
+        //On crée un tableau associatif avec l'IdActivité et les accompagnateurs assignés à cette activité
         foreach ($activites as $activite) {
             $accompagnateurs[] = ['activiteId' => $activite->getId(), 'accompagnateur' => $personnelsRepository->findPersonnelsForOneActivity($activite->getId())];
         }
@@ -26,7 +28,6 @@ class CalendrierController extends AbstractController
         return $this->render('calendrier/calendrier.html.twig', [
             'activitesAccompagnateurs' => $activiteRepository->findActivitiesForPersonnel($user->getId()),
             'activites' => $activiteRepository->findActivities(),
-            'personnelActivite' => $personnelsRepository->findPersonnelsForOneActivity(8),
             'accompagnateurs' => $accompagnateurs,
             'personnels' => $personnelsRepository->findAllPersonnels(),
 

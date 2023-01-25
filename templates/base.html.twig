@@ -33,7 +33,7 @@
                 <a href="{{ path('app_default') }}"><img src="{{ asset('/img/logo.png') }}" alt='Logo_Befree_Banner'></a>
             </div>
 
-            <div class='nav__links'>
+            <div class='nav__links me-2'>
                 <ul id='burger__menu'>
                     <li {% if app.request.get('_route') == 'app_default' %} class="activeLink"{% endif %}><a href="{{ path('app_default') }}">Accueil</a></li>                
                     {% if is_granted('ROLE_ACCOMPAGNATEUR') or is_granted('ROLE_ADMIN') %}
@@ -51,6 +51,9 @@
                         {% endif %}
                      {% else %}
                     <li><a href="{{ path('app_login') }}">Connexion</a></li>
+                    <li><a href='{{path('app_premiere_inscription')}}'>Inscription</a>
+</li>
+
                     {% endif %}
                     
                 </ul>
