@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">        
         <meta name="description" content="BeFree - Participer à des activités dans l'Hérault">       
@@ -28,22 +28,22 @@
     <body>
   
 
-        <nav>   
+        <nav >   
             <div class='nav__logo'>
-                <img src="{{ asset('/img/logo.png') }}">
+                <img src="{{ asset('/img/logo.png') }}" alt='Logo_Befree_Banner'>
             </div>
 
             <div class='nav__links'>
                 <ul id='burger__menu'>
-                    <li><a href="{{ path('app_default') }}">Accueil</a></li>                
+                    <li {% if app.request.get('_route') == 'app_default' %} class="activeLink"{% endif %}><a href="{{ path('app_default') }}">Accueil</a></li>                
                     {% if is_granted('ROLE_ACCOMPAGNATEUR') or is_granted('ROLE_ADMIN') %}
-                        <li><a href="{{ path('app_calendrier') }}">Mon calendrier</a></li>
+                        <li {% if app.request.get('_route') == 'app_calendrier' %} class="activeLink"{% endif %}><a href="{{ path('app_calendrier') }}">Mon calendrier</a></li>
                     {% endif %}              
                     
                     {% if is_granted('ROLE_USER') %}
                         {% if not is_granted('ROLE_ADMIN') and not is_granted('ROLE_ACCOMPAGNATEUR') %}
-                            <li><a href="{{ path('app_dashboard') }}">Tableau de bord</a></li>                        
-                            <li><a href="{{ path('app_profil') }}">Mon profil</a></li>
+                            <li {% if app.request.get('_route') == 'app_dashboard' %} class="activeLink"{% endif %}><a href="{{ path('app_dashboard') }}">Tableau de bord</a></li>                        
+                            <li {% if app.request.get('_route') == 'app_profil' %} class="activeLink"{% endif %}><a href="{{ path('app_profil') }}">Mon profil</a></li>
                         {% endif %}                
                             <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
                         {% if is_granted('ROLE_ADMIN') %}
@@ -54,7 +54,7 @@
                     {% endif %}
                     
                 </ul>
-                    <svg id='burger' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+                    <svg aria-role='Menu Burger' id='burger' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
                 
             </div>
 

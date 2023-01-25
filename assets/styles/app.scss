@@ -72,6 +72,12 @@ nav {
   color: $thirdColor;
 }
 
+.activeLink a {
+  background-color: $thirdColor !important;
+  height: 100%;
+  padding-top: 1.5rem !important;
+}
+
 footer {
   width: 100%;
   height: 300px;
@@ -503,6 +509,12 @@ table th {
     display: flex;
     width: 1.5em;
     margin-right: 25px;
+  }
+
+  .activeLink a {
+    padding-top: 0rem !important;
+    color: $thirdColor !important;
+    background-color: $primaryColor !important;
   }
 }
 
